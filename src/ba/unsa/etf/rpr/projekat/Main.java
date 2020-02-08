@@ -1,4 +1,4 @@
-package sample;
+package ba.unsa.etf.rpr.projekat;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +12,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml"));
-        primaryStage.setTitle("Hello World");
+        MainWindowController ctrl = new MainWindowController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);
         primaryStage.show();
