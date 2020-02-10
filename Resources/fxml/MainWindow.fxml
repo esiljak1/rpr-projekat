@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<GridPane fx:id="gridMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="gridMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
     <stylesheets>
         <URL value="@/css/MainWindowStyle.css" />
     </stylesheets>
@@ -23,12 +23,12 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" text="LOGIN" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+      <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAction" text="LOGIN" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
          <GridPane.margin>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" text="CONTINUE AS GUEST" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+      <Button fx:id="guestBtn" mnemonicParsing="false" text="CONTINUE AS GUEST" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
