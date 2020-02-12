@@ -42,6 +42,7 @@ public class ScientificDAO {
             addUser.setString(6, "esiljak1");
             addUser.setString(7, "test");
             addUser.setString(8, "");
+            addUser.setString(9, "default.jpg");
             addUser.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +64,7 @@ public class ScientificDAO {
             getUserId = conn.prepareStatement("select max(id) + 1 from users");
             getUser = conn.prepareStatement("select * from users where username=? and password=?");
 
-            addUser = conn.prepareStatement("insert into users values (?,?,?,?,?,?,?,?)");
+            addUser = conn.prepareStatement("insert into users values (?,?,?,?,?,?,?,?,?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -89,7 +90,7 @@ public class ScientificDAO {
             }
             return new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
                     rs.getString(5).equals("m") ? Gender.MALE : Gender.FEMALE, rs.getString(6),
-                    rs.getString(7), rs.getString(8));
+                    rs.getString(7), rs.getString(8), rs.getString(9));
         } catch (SQLException e) {
             e.printStackTrace();
         }return null;

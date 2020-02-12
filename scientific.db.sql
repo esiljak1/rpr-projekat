@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS "Users" (
 	"username"	TEXT,
 	"password"	TEXT,
 	"mail"	TEXT,
+	"image" TEXT,
 	PRIMARY KEY("id")
 );
 CREATE TABLE IF NOT EXISTS "ScWorks-Users" (
