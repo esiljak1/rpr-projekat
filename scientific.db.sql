@@ -1,4 +1,15 @@
 BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Users" (
+	"id"	INTEGER,
+	"firstname"	TEXT,
+	"lastname"	TEXT,
+	"age"	INTEGER,
+	"gender"	TEXT CHECK(gender='m' or gender='f'),
+	"username"	TEXT,
+	"password"	TEXT,
+	"mail"	TEXT,
+	PRIMARY KEY("id")
+);
 CREATE TABLE IF NOT EXISTS "ScWorks-Users" (
 	"sc_id"	INTEGER,
 	"user_id"	INTEGER,
@@ -9,14 +20,6 @@ CREATE TABLE IF NOT EXISTS "ScWorks" (
 	"id"	INTEGER,
 	"name"	TEXT,
 	"tags"	TEXT,
-	PRIMARY KEY("id")
-);
-CREATE TABLE IF NOT EXISTS "Users" (
-	"id"	INTEGER,
-	"firstname"	TEXT,
-	"lastname"	TEXT,
-	"age"	INTEGER,
-	"gender"	TEXT,
 	PRIMARY KEY("id")
 );
 COMMIT;
