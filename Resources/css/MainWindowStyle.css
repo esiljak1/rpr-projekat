@@ -1,3 +1,10 @@
 #naslov{
     -fx-font-size: 15px;
 }
+#gridMain{
+    -fx-background-color: #e6e6e6;
+}
+#welcomeMsg{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}

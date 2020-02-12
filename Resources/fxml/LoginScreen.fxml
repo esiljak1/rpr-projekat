@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
@@ -43,7 +44,6 @@
             <Insets bottom="5.0" right="80.0" />
          </GridPane.margin>
       </Button>
-      <Label text="(LOGO)" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <ButtonBar maxHeight="50.0" prefHeight="84.0" prefWidth="600.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <buttons>
             <Button fx:id="okBtn" mnemonicParsing="false" text="OK" />
@@ -53,5 +53,9 @@
             <Insets left="100.0" right="150.0" />
          </GridPane.margin>
       </ButtonBar>
+      <ImageView fx:id="imgLogo" fitHeight="130.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="90.0" />
+         </GridPane.margin></ImageView>
    </children>
 </GridPane>

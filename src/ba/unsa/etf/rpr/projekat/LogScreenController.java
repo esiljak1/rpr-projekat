@@ -9,14 +9,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class LogScreenController {
     public TextField fldUsername;
     public PasswordField fldPassword;
     public Button okBtn, cancelBtn, signUpBtn;
+    public ImageView imgLogo;
 
     public LogScreenController() {
     }
@@ -24,6 +28,8 @@ public class LogScreenController {
     @FXML
     public void initialize(){
         //todo dodati funkcionalnost za ok ukoliko username i password nisu prazna polja
+
+        imgLogo.setImage(new Image(new File("logo.png").toURI().toString(), 300, 250, false, false));
         okBtn.setOnAction((actionEvent) -> {
             if(fldUsername == null || fldUsername.getText().trim().isEmpty() || fldPassword == null || fldPassword.getText().trim().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
