@@ -8,7 +8,16 @@ public class ScientificWork {
     private String name;
     private String[] tags;
 
-    public ScientificWork(List<Person> authors, String name, String[] tags) {
+    private void test(List<Person> list) throws IllegalUserException {
+        for(Person p : list){
+            if(!(p instanceof User)){
+                throw new IllegalUserException("Author must be a registered user!");
+            }
+        }
+    }
+
+    public ScientificWork(List<Person> authors, String name, String[] tags) throws IllegalUserException {
+        test(authors);
         this.authors = authors;
         this.name = name;
         this.tags = tags;
@@ -26,7 +35,8 @@ public class ScientificWork {
         return authors;
     }
 
-    public void setAuthors(List<Person> authors) {
+    public void setAuthors(List<Person> authors) throws IllegalUserException {
+        test(authors);
         this.authors = authors;
     }
 
