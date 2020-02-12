@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
-    private PreparedStatement getUser;
+    private PreparedStatement getUser, addUser, getUserId;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
         try {
-            ulaz = new Scanner(new FileInputStream("korisnici.db.sql"));
+            ulaz = new Scanner(new FileInputStream("scientific.db.sql"));
             String sqlUpit = "";
             while (ulaz.hasNext()) {
                 sqlUpit += ulaz.nextLine();
@@ -32,6 +32,21 @@ public class ScientificDAO {
             e.printStackTrace();
         }
     }
+    public void napuni(){
+        try {
+            addUser.setInt(1, 1);
+            addUser.setString(2, "");
+            addUser.setString(3, "");
+            addUser.setInt(4, 20);
+            addUser.setString(5, "m");
+            addUser.setString(6, "esiljak1");
+            addUser.setString(7, "test");
+            addUser.setString(8, "");
+            addUser.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     private ScientificDAO() {
         try {
@@ -45,7 +60,10 @@ public class ScientificDAO {
             regenerisiBazu();
         }
         try {
+            getUserId = conn.prepareStatement("select max(id) + 1 from users");
             getUser = conn.prepareStatement("select * from users where username=? and password=?");
+
+            addUser = conn.prepareStatement("insert into users values (?,?,?,?,?,?,?,?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }

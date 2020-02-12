@@ -42,7 +42,7 @@
          </GridPane.margin></ImageView>
       <Label fx:id="welcomeMsg" text="Welcome to SWW" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets top="25.0" />
+            <Insets top="28.0" />
          </GridPane.margin></Label>
    </children>
 </GridPane>

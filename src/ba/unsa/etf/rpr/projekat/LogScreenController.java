@@ -22,11 +22,15 @@ public class LogScreenController {
     public Button okBtn, cancelBtn, signUpBtn;
     public ImageView imgLogo;
 
+    private ScientificDAO instance;
+
     public LogScreenController() {
     }
 
     @FXML
     public void initialize(){
+        instance = ScientificDAO.getInstance();
+        //instance.napuni();
         //todo dodati funkcionalnost za ok ukoliko username i password nisu prazna polja
 
         imgLogo.setImage(new Image(new File("logo.png").toURI().toString(), 300, 250, false, false));
@@ -37,6 +41,19 @@ public class LogScreenController {
                 alert.setTitle("Error");
                 alert.show();
             }
+            try {
+                instance.getUser(fldUsername.getText(), fldPassword.getText());
+            } catch (IllegalUserException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Invalid username or password");
+                alert.setTitle("Error");
+                alert.show();
+                return;
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Welcome");
+            alert.setTitle("Sidjara");
+            alert.show();
         });
 
         cancelBtn.setOnAction(actionEvent -> {

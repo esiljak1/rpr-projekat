@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+//sww - scientific work wiki
+
 public class Main extends Application {
 
     @Override
