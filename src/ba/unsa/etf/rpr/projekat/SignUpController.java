@@ -99,7 +99,6 @@ public class SignUpController {
             }
         });
         fldUsername.textProperty().addListener((obs, oldVal, newVal) -> {
-            //todo testiranje da li je username vec zauzet u bazi
             if(!newVal.trim().isEmpty()){
                 fldUsername.getStyleClass().removeAll("poljeNijeIspravno");
                 fldUsername.getStyleClass().add("poljeIspravno");
