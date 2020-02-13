@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
 public class LogScreenController {
     public TextField fldUsername;
     public PasswordField fldPassword;
@@ -70,7 +72,21 @@ public class LogScreenController {
         cancelBtn.setOnAction(actionEvent -> {
             Node node = (Node) actionEvent.getSource();
             Stage st = (Stage) node.getScene().getWindow();
+            MainWindowController ctrl = new MainWindowController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
+            loader.setController(ctrl);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Login");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
             st.close();
+            stage.show();
         });
 
         signUpBtn.setOnAction(actionEvent -> {

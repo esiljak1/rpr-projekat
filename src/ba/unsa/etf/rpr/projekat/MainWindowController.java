@@ -4,6 +4,7 @@ package ba.unsa.etf.rpr.projekat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -36,6 +37,11 @@ public class MainWindowController {
         stage.setTitle("Login");
         stage.setScene(new Scene(root, 300, 300));
         stage.setResizable(false);
+
+        Node node = (Node) actionEvent.getSource();
+        Stage st = (Stage) node.getScene().getWindow();
+        st.close();
+
         stage.show();
     }
 }
