@@ -50,10 +50,21 @@ public class LogScreenController {
                 alert.show();
                 return;
             }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Welcome");
-            alert.setTitle("Sidjara");
-            alert.show();
+            SWWMainController ctrl = new SWWMainController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
+            loader.setController(ctrl);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("SWW");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
+
         });
 
         cancelBtn.setOnAction(actionEvent -> {
