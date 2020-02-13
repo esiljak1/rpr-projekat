@@ -57,5 +57,11 @@
             <Insets top="50.0" />
          </GridPane.margin>
       </ImageView>
+      <Label fx:id="labelUser" text="Label" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Label>
+      <ImageView fx:id="imgUser" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

@@ -33,7 +33,7 @@ public class LogScreenController {
     public void initialize(){
         instance = ScientificDAO.getInstance();
         //instance.napuni();
-        //todo dodati funkcionalnost za ok ukoliko username i password nisu prazna polja
+        //todo dodati funkcionalnost za ok ukoliko username i password nisu prazna polja, skoro pa gotovo!!
 
         imgLogo.setImage(new Image(new File("logo.png").toURI().toString(), 300, 250, false, false));
         okBtn.setOnAction((actionEvent) -> {
@@ -43,8 +43,9 @@ public class LogScreenController {
                 alert.setTitle("Error");
                 alert.show();
             }
+            User user = null;
             try {
-                instance.getUser(fldUsername.getText(), fldPassword.getText());
+                user = instance.getUser(fldUsername.getText(), fldPassword.getText());
             } catch (IllegalUserException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Invalid username or password");
@@ -52,7 +53,7 @@ public class LogScreenController {
                 alert.show();
                 return;
             }
-            SWWMainController ctrl = new SWWMainController();
+            SWWMainController ctrl = new SWWMainController(user);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
             loader.setController(ctrl);
             Parent root = null;
