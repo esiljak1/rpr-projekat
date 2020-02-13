@@ -44,4 +44,25 @@ public class MainWindowController {
 
         stage.show();
     }
+    public void guestAction(ActionEvent actionEvent){
+        SWWMainController ctrl = new SWWMainController(null);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
+        loader.setController(ctrl);
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("SWW");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.setResizable(false);
+
+        Node node = (Node) actionEvent.getSource();
+        Stage st = (Stage) node.getScene().getWindow();
+        st.close();
+
+        stage.show();
+    }
 }

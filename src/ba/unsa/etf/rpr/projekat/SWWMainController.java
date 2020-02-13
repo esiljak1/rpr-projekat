@@ -1,15 +1,20 @@
 package ba.unsa.etf.rpr.projekat;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class SWWMainController {
     public ImageView imgLogo, imgUser;
     public Label labelUser;
+    public ChoiceBox<String> choiceCategory;
 
     private User currentUser;
 
@@ -30,5 +35,12 @@ public class SWWMainController {
         imgUser.setOnMouseClicked((handle) -> {
             //otvoriti user profil gdje se moze izmedju ostalog promijeniti slika
         });
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("Name");
+        arr.add("Author");
+        arr.add("Keywords");
+        ObservableList<String> temp = FXCollections.observableArrayList(arr);
+        choiceCategory.setItems(temp);
+        choiceCategory.setValue("Name");
     }
 }
