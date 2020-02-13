@@ -7,7 +7,7 @@
 <?import java.net.URL?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
-      <URL value = "@/css/MainWindowStyle.css"/>
+      <URL value="@/css/MainWindowStyle.css" />
    </stylesheets>
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -77,8 +77,8 @@
       <ImageView fx:id="imgAvatar" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <ButtonBar maxHeight="50.0" prefHeight="77.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
         <buttons>
-          <Button mnemonicParsing="false" text="OK" />
-            <Button mnemonicParsing="false" text="Cancel" />
+          <Button fx:id="okBtn" mnemonicParsing="false" text="OK" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" />
         </buttons>
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />

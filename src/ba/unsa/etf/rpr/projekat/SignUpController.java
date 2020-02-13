@@ -3,12 +3,11 @@ package ba.unsa.etf.rpr.projekat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.io.File;
 
@@ -18,6 +17,7 @@ public class SignUpController {
     public PasswordField fldPassword;
     public ChoiceBox<String> choiceGender;
     public DatePicker dateDOB;
+    public Button okBtn, cancelBtn;
 
     private boolean nameTest(String s){
         for(int i = 0; i < s.length(); i++){
@@ -88,6 +88,14 @@ public class SignUpController {
                 fldUsername.getStyleClass().removeAll("poljeIspravno");
                 fldUsername.getStyleClass().add("poljeNijeIspravno");
             }
+        });
+        okBtn.setOnAction(actionEvent -> {
+            //todo dodavanje korisnika u bazu
+        });
+        cancelBtn.setOnAction(actionEvent -> {
+            Node node = (Node) actionEvent.getSource();
+            Stage st = (Stage) node.getScene().getWindow();
+            st.close();
         });
     }
 

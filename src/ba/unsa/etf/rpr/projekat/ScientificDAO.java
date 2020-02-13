@@ -95,4 +95,27 @@ public class ScientificDAO {
             e.printStackTrace();
         }return null;
     }
+    public void addUser(User user){
+        int id = 0;
+        try {
+            ResultSet rs = getUserId.executeQuery();
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            addUser.setInt(1, id);
+            addUser.setString(2, user.getFirstname());
+            addUser.setString(3, user.getLastname());
+            addUser.setInt(4, user.getAge());
+            addUser.setString(5, user.getGender().equals(Gender.MALE) ? "m" : "f");
+            addUser.setString(6, user.getUsername());
+            addUser.setString(7, user.getPassword());
+            addUser.setString(8, user.getEmail());
+            addUser.setString(9, user.getImage());
+            addUser.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
