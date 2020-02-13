@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
-    private PreparedStatement getUser, addUser, getUserId;
+    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -56,13 +56,14 @@ public class ScientificDAO {
             e.printStackTrace();
         }
         try {
-            getUser = conn.prepareStatement("select * from users where username=? and password=?");
+            getUserFromUsernamePassword = conn.prepareStatement("select * from users where username=? and password=?");
         } catch (SQLException e) {
             regenerisiBazu();
         }
         try {
             getUserId = conn.prepareStatement("select max(id) + 1 from users");
-            getUser = conn.prepareStatement("select * from users where username=? and password=?");
+            getUserFromUsernamePassword = conn.prepareStatement("select * from users where username=? and password=?");
+            getUserFromUsername = conn.prepareStatement("select * from users where username=?");
 
             addUser = conn.prepareStatement("insert into users values (?,?,?,?,?,?,?,?,?)");
         } catch (SQLException e) {
@@ -81,10 +82,10 @@ public class ScientificDAO {
 
     public User getUser(String username, String password) throws IllegalUserException {
         try {
-            getUser.setString(1, username);
-            getUser.setString(2, password);
+            getUserFromUsernamePassword.setString(1, username);
+            getUserFromUsernamePassword.setString(2, password);
 
-            ResultSet rs = getUser.executeQuery();
+            ResultSet rs = getUserFromUsernamePassword.executeQuery();
             if(!rs.next()){
                 throw new IllegalUserException("User not found");
             }
@@ -117,5 +118,14 @@ public class ScientificDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public boolean existsUser(String username){
+        try {
+            getUserFromUsername.setString(1, username);
+            ResultSet rs = getUserFromUsername.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return false;
     }
 }

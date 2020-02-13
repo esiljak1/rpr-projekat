@@ -112,6 +112,14 @@ public class SignUpController {
             if(styleTest(fldFirstname, "poljeIspravno") && styleTest(fldLastname, "poljeIspravno") && styleTest(fldMail, "poljeIspravno") &&
                    styleTest(fldUsername, "poljeIspravno") && styleTest(fldPassword, "poljeIspravno") && choiceGender.getSelectionModel().getSelectedItem() != null
               && dateDOB.getValue() != null){
+                if(instance.existsUser(fldUsername.getText())){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText("There is already a user with that username, please pick a different one");
+                    alert.setTitle("Error");
+                    alert.show();
+                    fldUsername.getStyleClass().removeAll("poljeIspravno");
+                    fldUsername.getStyleClass().add("poljeNijeIspravno");
+                }
                 Gender g = choiceGender.equals("Male") ? Gender.MALE : Gender.FEMALE;
                 int age = getAge(dateDOB.getValue());
                 User user = new User(0, fldFirstname.getText(), fldLastname.getText(), age, g, fldUsername.getText(), fldPassword.getText(), fldMail.getText(), imgAvatar.getImage().getUrl());
