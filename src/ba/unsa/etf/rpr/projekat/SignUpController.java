@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.time.LocalDate;
 
 public class SignUpController {
     public ImageView imgAvatar;
@@ -19,13 +20,31 @@ public class SignUpController {
     public DatePicker dateDOB;
     public Button okBtn, cancelBtn;
 
+    private ScientificDAO instance;
+
     private boolean nameTest(String s){
         for(int i = 0; i < s.length(); i++){
             if(!((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z'))) return false;
         }return true;
     }
+    private boolean styleTest(TextField fld, String s){
+        for(String st : fld.getStyleClass()){
+            if(st.equals(s)) return true;
+        }return false;
+    }
+    private int getAge(LocalDate date){
+        int age = LocalDate.now().getYear() - date.getYear();
+        if(date.getMonthValue() > LocalDate.now().getMonthValue()){
+            return age;
+        }else if(date.getMonthValue() == LocalDate.now().getMonthValue()){
+            if(date.getDayOfMonth() > LocalDate.now().getDayOfMonth()){
+                return age;
+            }
+        }return age + 1;
+    }
 
-    public SignUpController() {
+    public SignUpController(ScientificDAO instance) {
+        this.instance = instance;
     }
 
     @FXML
@@ -90,7 +109,16 @@ public class SignUpController {
             }
         });
         okBtn.setOnAction(actionEvent -> {
-            //todo dodavanje korisnika u bazu
+            if(styleTest(fldFirstname, "poljeIspravno") && styleTest(fldLastname, "poljeIspravno") && styleTest(fldMail, "poljeIspravno") &&
+                   styleTest(fldUsername, "poljeIspravno") && styleTest(fldPassword, "poljeIspravno") && choiceGender.getSelectionModel().getSelectedItem() != null
+              && dateDOB.getValue() != null){
+                Gender g = choiceGender.equals("Male") ? Gender.MALE : Gender.FEMALE;
+                int age = getAge(dateDOB.getValue());
+                User user = new User(0, fldFirstname.getText(), fldLastname.getText(), age, g, fldUsername.getText(), fldPassword.getText(), fldMail.getText(), imgAvatar.getImage().getUrl());
+                instance.addUser(user);
+            }else{
+                System.out.println("NOT OK");
+            }
         });
         cancelBtn.setOnAction(actionEvent -> {
             Node node = (Node) actionEvent.getSource();

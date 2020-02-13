@@ -91,7 +91,7 @@ public class LogScreenController {
         });
 
         signUpBtn.setOnAction(actionEvent -> {
-            SignUpController ctrl = new SignUpController();
+            SignUpController ctrl = new SignUpController(instance);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreen.fxml"));
             loader.setController(ctrl);
             Parent root = null;
