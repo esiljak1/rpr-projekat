@@ -67,12 +67,12 @@
             <Insets left="10.0" top="170.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="okBtn" maxWidth="50.0" mnemonicParsing="false" text="OK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="okBtn" maxWidth="50.0" mnemonicParsing="false" text="OK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" onAction="#actionClose">
          <GridPane.margin>
             <Insets right="100.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="2" onAction="#actionClose">
          <GridPane.margin>
             <Insets left="100.0" />
          </GridPane.margin>

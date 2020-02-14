@@ -2,26 +2,54 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.time.LocalDate;
 
 public class AddAuthorController {
     public TextField fldFirstname, fldLastname, fldUni;
     public DatePicker dateDOB;
     public ChoiceBox<String> choiceGender;
 
+    private Author author = null;
+
     private boolean nameTest(String s){
         for(int i = 0; i < s.length(); i++){
             if(!((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z'))) return false;
         }return true;
     }
+    private boolean styleTest(TextField fld, String s){
+        for(String st : fld.getStyleClass()){
+            if(st.equals(s)) return true;
+        }return false;
+    }
     private void setFalse(TextField field){
         field.getStyleClass().add("poljeNijeIspravno");
     }
+    private int getAge(LocalDate date){
+        int age = LocalDate.now().getYear() - date.getYear();
+        if(date.getMonthValue() > LocalDate.now().getMonthValue()){
+            return age;
+        }else if(date.getMonthValue() == LocalDate.now().getMonthValue()){
+            if(date.getDayOfMonth() > LocalDate.now().getDayOfMonth()){
+                return age;
+            }
+        }return age + 1;
+    }
 
     public AddAuthorController() {
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @FXML
@@ -62,5 +90,24 @@ public class AddAuthorController {
                 fldUni.getStyleClass().add("poljeNijeIspravno");
             }
         });
+    }
+    public void actionClose(ActionEvent actionEvent){
+        if(((Button)actionEvent.getSource()).getText().equals("Cancel")){
+            author = null;
+        }else {
+            String s = "poljeIspravno";
+            if (styleTest(fldFirstname, s) && styleTest(fldLastname, s) && styleTest(fldUni, s) && dateDOB.getValue() != null && choiceGender.getSelectionModel().getSelectedItem() != null) {
+                Gender g = choiceGender.getSelectionModel().getSelectedItem().equals("Male") ? Gender.MALE : Gender.FEMALE;
+                int age = getAge(dateDOB.getValue());
+                author = new Author(fldFirstname.getText(), fldLastname.getText(), age, g, fldUni.getText());
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Please enter valid information (password must be at least 8 characters long)");
+                alert.show();
+            }
+        }Node node = (Node) actionEvent.getSource();
+        Stage st = (Stage) node.getScene().getWindow();
+        st.close();
     }
 }
