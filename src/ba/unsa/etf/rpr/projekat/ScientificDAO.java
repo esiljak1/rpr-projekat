@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
-    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername;
+    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -34,15 +34,17 @@ public class ScientificDAO {
     }
     public void napuni(){
         try {
+            addPerson.setInt(1, 1);
+            addPerson.setString(2, "Emin");
+            addPerson.setString(3, "Siljak");
+            addPerson.setInt(4, 20);
+            addPerson.setString(5, "m");
+            addPerson.executeUpdate();
             addUser.setInt(1, 1);
-            addUser.setString(2, "");
-            addUser.setString(3, "");
-            addUser.setInt(4, 20);
-            addUser.setString(5, "m");
-            addUser.setString(6, "esiljak1");
-            addUser.setString(7, "test");
-            addUser.setString(8, "");
-            addUser.setString(9, "default.jpg");
+            addUser.setString(2, "esiljak1");
+            addUser.setString(3, "test");
+            addUser.setString(4, "esiljak1@etf.unsa.ba");
+            addUser.setString(5, "@/../Resources/images/default.jpg");
             addUser.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,16 +58,17 @@ public class ScientificDAO {
             e.printStackTrace();
         }
         try {
-            getUserFromUsernamePassword = conn.prepareStatement("select * from users where username=? and password=?");
+            getUserFromUsernamePassword = conn.prepareStatement("select p.*, u.username, u.password, u.mail, u.image from users u, person p where u.id = p.id and username=? and password=?");
         } catch (SQLException e) {
             regenerisiBazu();
         }
         try {
             getUserId = conn.prepareStatement("select max(id) + 1 from users");
-            getUserFromUsernamePassword = conn.prepareStatement("select * from users where username=? and password=?");
+            getUserFromUsernamePassword = conn.prepareStatement("select p.*, u.username, u.password, u.mail, u.image from users u, person p where u.id = p.id and username=? and password=?");
             getUserFromUsername = conn.prepareStatement("select * from users where username=?");
 
-            addUser = conn.prepareStatement("insert into users values (?,?,?,?,?,?,?,?,?)");
+            addUser = conn.prepareStatement("insert into users values (?,?,?,?,?)");
+            addPerson = conn.prepareStatement("insert into person values (?,?,?,?,?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -105,15 +108,17 @@ public class ScientificDAO {
             e.printStackTrace();
         }
         try {
+            addPerson.setInt(1, id);
+            addPerson.setString(2, user.getFirstname());
+            addPerson.setString(3, user.getLastname());
+            addPerson.setInt(4, user.getAge());
+            addPerson.setString(5, user.getGender().equals(Gender.MALE) ? "m" : "f");
+            addPerson.executeUpdate();
             addUser.setInt(1, id);
-            addUser.setString(2, user.getFirstname());
-            addUser.setString(3, user.getLastname());
-            addUser.setInt(4, user.getAge());
-            addUser.setString(5, user.getGender().equals(Gender.MALE) ? "m" : "f");
-            addUser.setString(6, user.getUsername());
-            addUser.setString(7, user.getPassword());
-            addUser.setString(8, user.getEmail());
-            addUser.setString(9, user.getImage());
+            addUser.setString(2, user.getUsername());
+            addUser.setString(3, user.getPassword());
+            addUser.setString(4, user.getEmail());
+            addUser.setString(5, user.getImage());
             addUser.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
