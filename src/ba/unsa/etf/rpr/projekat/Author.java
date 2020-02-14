@@ -15,4 +15,10 @@ public class Author extends Person {
     public void setUniversity(String university) {
         this.university = university;
     }
+
+    @Override
+    public String toString() {
+        return super.getFirstname() + " " + super.getLastname() +
+               " " + university;
+    }
 }

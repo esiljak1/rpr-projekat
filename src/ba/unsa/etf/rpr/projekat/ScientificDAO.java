@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
-    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor;
+    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -64,6 +64,7 @@ public class ScientificDAO {
             regenerisiBazu();
         }
         try {
+            getPersonId = conn.prepareStatement("select max(id) + 1 from person");
             getUserId = conn.prepareStatement("select max(id) + 1 from users");
             getUserFromUsernamePassword = conn.prepareStatement("select p.*, u.username, u.password, u.mail, u.image from users u, person p where u.id = p.id and username=? and password=?");
             getUserFromUsername = conn.prepareStatement("select * from users where username=?");
@@ -106,7 +107,7 @@ public class ScientificDAO {
     public void addUser(User user){
         int id = 0;
         try {
-            ResultSet rs = getUserId.executeQuery();
+            ResultSet rs = getPersonId.executeQuery();
             id = rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,7 +143,7 @@ public class ScientificDAO {
             getAuthorFromNameUni.setString(1, firstname);
             getAuthorFromNameUni.setString(2, lastname);
             getAuthorFromNameUni.setString(3, uni);
-            ResultSet rs = getUserFromUsername.executeQuery();
+            ResultSet rs = getAuthorFromNameUni.executeQuery();
             return rs.next();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -164,7 +165,7 @@ public class ScientificDAO {
     public void addAuthor(Author author){
         int id = 0;
         try {
-            ResultSet rs = getUserId.executeQuery();
+            ResultSet rs = getPersonId.executeQuery();
             id = rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();

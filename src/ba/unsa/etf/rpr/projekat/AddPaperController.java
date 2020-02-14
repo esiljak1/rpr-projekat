@@ -88,7 +88,7 @@ public class AddPaperController {
             stage.setOnHiding(windowEvent -> {
                 if(ctrl.getAuthor() != null){
                     if(!instance.existsAuthor(ctrl.getAuthor().getFirstname(), ctrl.getAuthor().getLastname(), ctrl.getAuthor().getUniversity())){
-                        instance.addAuthor(ctrl.getAuthor());
+                        instance.addAuthor(ctrl.getAuthor()); // ne moze ovako, u bazu se treba tek na kraju dodati inace ako pokupim sve iz baze pokupit cu bukvalno sve iz baze
                     }authors.addAll(instance.getAuthors());
                     listAuthors.setItems(authors);
                 }
