@@ -35,13 +35,14 @@ public class LogScreenController {
         //instance.napuni();
         //todo dodati funkcionalnost za ok ukoliko username i password nisu prazna polja, skoro pa gotovo!!
 
-        imgLogo.setImage(new Image(new File("logo.png").toURI().toString(), 300, 250, false, false));
+        imgLogo.setImage(new Image(new File("@/../Resources/images/logo.png").toURI().toString(), 300, 250, false, false));
         okBtn.setOnAction((actionEvent) -> {
             if(fldUsername == null || fldUsername.getText().trim().isEmpty() || fldPassword == null || fldPassword.getText().trim().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Please write your username and password in the correct fields!");
                 alert.setTitle("Error");
                 alert.show();
+                return;
             }
             User user = null;
             try {

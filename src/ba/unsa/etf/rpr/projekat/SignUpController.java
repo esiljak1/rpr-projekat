@@ -58,7 +58,7 @@ public class SignUpController {
         temp.add("Male");
         temp.add("Female");
         choiceGender.setItems(temp);
-        imgAvatar.setImage(new Image(new File("default.jpg").toURI().toString(), 100, 100, false, false));
+        imgAvatar.setImage(new Image(new File("@/../Resources/images/default.jpg").toURI().toString(), 100, 100, false, false));
 
         fldFirstname.textProperty().addListener((obs, oldVal, newVal) -> {
             if(!newVal.trim().isEmpty() && nameTest(newVal)){

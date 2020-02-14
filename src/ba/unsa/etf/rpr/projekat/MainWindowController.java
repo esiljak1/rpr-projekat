@@ -20,7 +20,7 @@ public class MainWindowController {
     }
     @FXML
     public void initialize(){
-        imgLogo.setImage(new Image(new File("logo.png").toURI().toString(), 300, 250, false, false));
+        imgLogo.setImage(new Image(new File("@/../Resources/images/logo.png").toURI().toString(), 300, 250, false, false));
     }
 
     public void loginAction(ActionEvent actionEvent){

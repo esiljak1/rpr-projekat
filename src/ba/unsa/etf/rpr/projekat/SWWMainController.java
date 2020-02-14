@@ -31,14 +31,14 @@ public class SWWMainController {
 
     @FXML
     public void initialize(){
-        imgLogo.setImage(new Image(new File("logo.png").toURI().toString(), 300, 250, false, false));
+        imgLogo.setImage(new Image(new File("@/../Resources/images/logo.png").toURI().toString(), 300, 250, false, false));
         if(currentUser == null){
             labelUser.setText("Currently searching as guest");
         }else {
             labelUser.setText("Logged in as " + currentUser.getUsername());
         }
         //razlika izmedju default slike i slike s giphy-a !!
-        imgUser.setImage(new Image(new File("default.jpg").toURI().toString(), 150, 150, false, false));
+        imgUser.setImage(new Image(new File("@/../Resources/images/default.jpg").toURI().toString(), 150, 150, false, false));
         imgUser.setOnMouseClicked((handle) -> {
             //todo otvoriti user profil gdje se moze izmedju ostalog promijeniti slika
         });
