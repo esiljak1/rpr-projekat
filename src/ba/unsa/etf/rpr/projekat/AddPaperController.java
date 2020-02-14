@@ -19,6 +19,7 @@ import java.nio.file.StandardCopyOption;
 public class AddPaperController {
     public Button addFileBtn;
     public Button tagsBtn;
+    public Button addAuthorsBtn;
     public TextField fileTxt;
 
     private File selectedFile = null;
@@ -58,6 +59,22 @@ public class AddPaperController {
             }
             Stage stage = new Stage();
             stage.setTitle("Add tags");
+            stage.setScene(new Scene(root, 300, 400));
+            stage.setResizable(false);
+            stage.show();
+        });
+        addAuthorsBtn.setOnAction(actionEvent -> {
+            AddAuthorController ctrl = new AddAuthorController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddAuthor.fxml"));
+            loader.setController(ctrl);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Add author");
             stage.setScene(new Scene(root, 300, 400));
             stage.setResizable(false);
             stage.show();

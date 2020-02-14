@@ -78,7 +78,7 @@ public class SWWMainController {
                 }
                 Stage stage = new Stage();
                 stage.setTitle("New paper");
-                stage.setScene(new Scene(root, 300, 300));
+                stage.setScene(new Scene(root, 400, 500));
                 stage.setResizable(false);
                 stage.show();
             }

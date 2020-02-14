@@ -26,7 +26,7 @@
       </Button>
       <ListView fx:id="listAuthors" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
          <GridPane.margin>
-            <Insets bottom="100.0" />
+            <Insets bottom="100.0" right="10.0" />
          </GridPane.margin>
       </ListView>
       <CheckBox fx:id="checkAuthor" contentDisplay="RIGHT" mnemonicParsing="false" text="I'm an author" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">

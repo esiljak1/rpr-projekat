@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="100.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="100.0" right="10.0" top="50.0" />
+         </GridPane.margin>
+      </TextField>
+      <DatePicker GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="20.0" top="90.0" />
+         </GridPane.margin>
+      </DatePicker>
+      <ChoiceBox prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="30.0" top="130.0" />
+         </GridPane.margin>
+      </ChoiceBox>
+      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="100.0" right="10.0" top="170.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label text="Firstname" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Lastname" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Date of birth" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="90.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Gender" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="130.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="University" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="170.0" />
+         </GridPane.margin>
+      </Label>
+      <Button fx:id="okBtn" maxWidth="50.0" mnemonicParsing="false" text="OK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="100.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="100.0" />
+         </GridPane.margin>
+      </Button>
+   </children>
+</GridPane>
