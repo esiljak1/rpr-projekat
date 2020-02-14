@@ -3,8 +3,12 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
+  <stylesheets>
+     <URL value="@/css/MainWindowStyle.css"/>
+  </stylesheets>
+   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
   </columnConstraints>
   <rowConstraints>
@@ -13,27 +17,27 @@
     <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <TextField fx:id="fldFirstname" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="100.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </TextField>
-      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <TextField fx:id="fldLastname" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="100.0" right="10.0" top="50.0" />
          </GridPane.margin>
       </TextField>
-      <DatePicker GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <DatePicker fx:id="dateDOB" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="20.0" top="90.0" />
          </GridPane.margin>
       </DatePicker>
-      <ChoiceBox prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <ChoiceBox fx:id="choiceGender" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="30.0" top="130.0" />
          </GridPane.margin>
       </ChoiceBox>
-      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <TextField fx:id="fldUni" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="100.0" right="10.0" top="170.0" />
          </GridPane.margin>
