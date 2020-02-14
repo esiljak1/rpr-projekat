@@ -3,12 +3,13 @@ package ba.unsa.etf.rpr.projekat;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
-    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson;
+    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -66,9 +67,12 @@ public class ScientificDAO {
             getUserId = conn.prepareStatement("select max(id) + 1 from users");
             getUserFromUsernamePassword = conn.prepareStatement("select p.*, u.username, u.password, u.mail, u.image from users u, person p where u.id = p.id and username=? and password=?");
             getUserFromUsername = conn.prepareStatement("select * from users where username=?");
+            getAuthorFromNameUni = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id and p.firstname=? and p.lastname=? and a.university=?");
+            getAllAuthors = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id");
 
             addUser = conn.prepareStatement("insert into users values (?,?,?,?,?)");
             addPerson = conn.prepareStatement("insert into person values (?,?,?,?,?)");
+            addAuthor = conn.prepareStatement("insert into author values (?,?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -132,5 +136,52 @@ public class ScientificDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }return false;
+    }
+    public boolean existsAuthor(String firstname, String lastname, String uni){
+        try {
+            getAuthorFromNameUni.setString(1, firstname);
+            getAuthorFromNameUni.setString(2, lastname);
+            getAuthorFromNameUni.setString(3, uni);
+            ResultSet rs = getUserFromUsername.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return false;
+    }
+    public ArrayList<Author> getAuthors(){
+        ArrayList<Author> ret = new ArrayList<>();
+        try {
+            ResultSet rs = getAllAuthors.executeQuery();
+            while(rs.next()){
+                Author temp = new Author(rs.getString(2), rs.getString(3), rs.getInt(4),
+                        rs.getString(5).equals("m") ? Gender.MALE : Gender.FEMALE, rs.getString(6));
+                ret.add(temp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return ret;
+    }
+    public void addAuthor(Author author){
+        int id = 0;
+        try {
+            ResultSet rs = getUserId.executeQuery();
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            addPerson.setInt(1, id);
+            addPerson.setString(2, author.getFirstname());
+            addPerson.setString(3, author.getLastname());
+            addPerson.setInt(4, author.getAge());
+            addPerson.setString(5, author.getGender().equals(Gender.MALE) ? "m" : "f");
+            addPerson.executeUpdate();
+
+            addAuthor.setInt(1, id);
+            addAuthor.setString(2, author.getUniversity());
+            addAuthor.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

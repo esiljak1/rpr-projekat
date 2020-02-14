@@ -54,7 +54,7 @@ public class LogScreenController {
                 alert.show();
                 return;
             }
-            SWWMainController ctrl = new SWWMainController(user);
+            SWWMainController ctrl = new SWWMainController(user, instance);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
             loader.setController(ctrl);
             Parent root = null;

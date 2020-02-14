@@ -24,9 +24,11 @@ public class SWWMainController {
     public Button btnAdd;
 
     private User currentUser;
+    private ScientificDAO instance = null;
 
-    public SWWMainController(User u) {
+    public SWWMainController(User u, ScientificDAO instance) {
         currentUser = u;
+        this.instance = instance;
     }
 
     @FXML
@@ -67,7 +69,7 @@ public class SWWMainController {
                 stage.setResizable(false);
                 stage.show();
             }else{
-                AddPaperController ctrl = new AddPaperController();
+                AddPaperController ctrl = new AddPaperController(instance);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddPaper.fxml"));
                 loader.setController(ctrl);
                 Parent root = null;

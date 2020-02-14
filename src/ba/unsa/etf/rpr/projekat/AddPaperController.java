@@ -1,11 +1,14 @@
 package ba.unsa.etf.rpr.projekat;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -21,10 +24,14 @@ public class AddPaperController {
     public Button tagsBtn;
     public Button addAuthorsBtn;
     public TextField fileTxt;
+    public ListView<Author> listAuthors;
 
     private File selectedFile = null;
+    private ScientificDAO instance = null;
+    private ObservableList<Author> authors = FXCollections.observableArrayList();
 
-    public AddPaperController() {
+    public AddPaperController(ScientificDAO instance) {
+        this.instance = instance;
     }
 
     @FXML
@@ -78,6 +85,14 @@ public class AddPaperController {
             stage.setScene(new Scene(root, 300, 400));
             stage.setResizable(false);
             stage.show();
+            stage.setOnHiding(windowEvent -> {
+                if(ctrl.getAuthor() != null){
+                    if(!instance.existsAuthor(ctrl.getAuthor().getFirstname(), ctrl.getAuthor().getLastname(), ctrl.getAuthor().getUniversity())){
+                        instance.addAuthor(ctrl.getAuthor());
+                    }authors.addAll(instance.getAuthors());
+                    listAuthors.setItems(authors);
+                }
+            });
         });
     }
 

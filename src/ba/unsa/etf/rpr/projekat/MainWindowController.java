@@ -45,7 +45,7 @@ public class MainWindowController {
         stage.show();
     }
     public void guestAction(ActionEvent actionEvent){
-        SWWMainController ctrl = new SWWMainController(null);
+        SWWMainController ctrl = new SWWMainController(null, ScientificDAO.getInstance());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
         loader.setController(ctrl);
         Parent root = null;
