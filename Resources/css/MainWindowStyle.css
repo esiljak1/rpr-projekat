@@ -14,3 +14,6 @@
 .poljeNijeIspravno{
     -fx-background-color: lightpink;
 }
+#tagsLbl{
+    -fx-font-size: 15px;
+}
