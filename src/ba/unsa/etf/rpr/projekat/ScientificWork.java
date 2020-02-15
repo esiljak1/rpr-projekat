@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ScientificWork {
     private int id;
-    private List<Person> authors;
+    private List<Author> authors;
     private String name;
     private String[] tags;
 
@@ -16,8 +16,15 @@ public class ScientificWork {
         }
     }
 
-    public ScientificWork(List<Person> authors, String name, String[] tags) throws IllegalUserException {
-        test(authors);
+    public ScientificWork(int id, List<Author> authors, String name, String[] tags) {
+        this.id = id;
+        this.authors = authors;
+        this.name = name;
+        this.tags = tags;
+    }
+
+    public ScientificWork(List<Author> authors, String name, String[] tags) throws IllegalUserException {
+        //test(authors);
         this.authors = authors;
         this.name = name;
         this.tags = tags;
@@ -31,12 +38,12 @@ public class ScientificWork {
         this.id = id;
     }
 
-    public List<Person> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<Person> authors) throws IllegalUserException {
-        test(authors);
+    public void setAuthors(List<Author> authors) throws IllegalUserException {
+       // test(authors);
         this.authors = authors;
     }
 

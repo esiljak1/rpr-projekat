@@ -4,6 +4,23 @@ public class Person {
     private String firstname, lastname;
     private int age;
     private Gender gender;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Person(int id, String firstname, String lastname, int age, Gender gender) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.gender = gender;
+        this.id = id;
+    }
 
     public Person(String firstname, String lastname, int age, Gender gender) {
         if(age <= 0) throw new IllegalArgumentException("Age must be positive!!");

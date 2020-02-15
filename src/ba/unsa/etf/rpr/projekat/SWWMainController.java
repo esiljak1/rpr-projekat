@@ -26,11 +26,11 @@ public class SWWMainController {
     private User currentUser;
     private ScientificDAO instance = null;
 
-    private void checkAndAdd(List<Person> list, int paperId){
-        for(Person p : list){
-            int id = instance.existsAuthor(p.getFirstname(), p.getLastname(), ((Author) p).getUniversity());
+    private void checkAndAdd(List<Author> list, int paperId){
+        for(Author p : list){
+            int id = instance.existsAuthor(p.getFirstname(), p.getLastname(), p.getUniversity());
             if(id == -1){
-                id = instance.addAuthor(((Author) p));
+                id = instance.addAuthor(p);
             }
             instance.addAuthorForScWork(id, paperId);
         }

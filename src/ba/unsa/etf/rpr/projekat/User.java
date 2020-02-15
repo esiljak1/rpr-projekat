@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.projekat;
 
 public class User extends Person{
-    private int id;
     private String username, password, email, image;
 
     public User(String firstname, String lastname, int age, Gender gender) {
@@ -9,20 +8,11 @@ public class User extends Person{
     }
 
     public User(int id, String firstname, String lastname, int age, Gender gender, String username, String password, String email, String image) {
-        super(firstname, lastname, age, gender);
-        this.id = id;
+        super(id, firstname, lastname, age, gender);
         this.username = username;
         this.password = password;
         this.email = email;
         this.image = image;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUsername() {

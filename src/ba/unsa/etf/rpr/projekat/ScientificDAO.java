@@ -4,13 +4,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
     private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId,
-                                addAuthorForScWork, addScWork, getPaperId;
+                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -41,6 +42,14 @@ public class ScientificDAO {
             ret += " ";
         }return ret;
     }
+    private ScientificWork getPaperFromResultSet(ResultSet rs) throws SQLException, IllegalUserException {
+        return new ScientificWork(rs.getInt(1), null, rs.getString(2), (rs.getString(3).split(",")));
+    }
+    private Author getAuthorFromResultSet(ResultSet rs) throws Exception {
+        Gender g = rs.getString(5).equals("m") ? Gender.MALE : Gender.FEMALE;
+        return new Author(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), g, rs.getString(6));
+    }
+
     public void napuni(){
         try {
             addPerson.setInt(1, 1);
@@ -79,6 +88,10 @@ public class ScientificDAO {
             getAuthorFromNameUni = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id and p.firstname=? and p.lastname=? and a.university=?");
             getAllAuthors = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id");
             getPaperId = conn.prepareStatement("select max (id) + 1 from scworks");
+            getPaperFromName = conn.prepareCall("select * from scworks where name like ?");
+            getPaperFromTags = conn.prepareCall("select * from scworks where tags like ?");
+            getPaperFromAuthor = conn.prepareStatement("select s.* from scworks s, ScWorksAuthors sa, authors a where s.id = sa.sc_id and a.id = sa.author_id and a.first_name || ' ' || a.lastname like ?");
+            getAuthorsFromPaperId = conn.prepareStatement("select p.*, a.university from person p, author a, ScWorksAuthors sa where sa.sc_id=? and sa.author_id=a.id and a.id=p.id");
 
             addUser = conn.prepareStatement("insert into users values (?,?,?,?,?)");
             addPerson = conn.prepareStatement("insert into person values (?,?,?,?,?)");
@@ -222,5 +235,63 @@ public class ScientificDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public List<Author> getAuthorsFromPaperId(int id){
+        List<Author> list = new ArrayList<>();
+        try {
+            getAuthorsFromPaperId.setInt(1, id);
+            ResultSet rs = getAuthorsFromPaperId.executeQuery();
+            while(rs.next()){
+                list.add(getAuthorFromResultSet(rs));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return list;
+    }
+    public List<ScientificWork> getWorksByName(String name){
+        List<ScientificWork> ret = new ArrayList<>();
+        try {
+            getPaperFromName.setString(1, "%" + name + "%");
+            ResultSet rs = getPaperFromName.executeQuery();
+            while(rs.next()){
+                ScientificWork temp = getPaperFromResultSet(rs);
+                List<Author> list = getAuthorsFromPaperId(rs.getInt(1));
+                temp.setAuthors(list);
+                ret.add(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return ret;
+    }
+    public List<ScientificWork> getWorksByAuthor(String authorName){
+        List<ScientificWork> ret = new ArrayList<>();
+
+        try {
+            getPaperFromAuthor.setString(1, "%" + authorName + "%");
+            ResultSet rs = getPaperFromAuthor.executeQuery();
+            while(rs.next()){
+                ScientificWork temp = getPaperFromResultSet(rs);
+                List<Author> list = getAuthorsFromPaperId(rs.getInt(1));
+                temp.setAuthors(list);
+                ret.add(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return ret;
+    }
+    public List<ScientificWork> getWorksByTag(String tag){
+        List<ScientificWork> ret = new ArrayList<>();
+        try {
+            getPaperFromTags.setString(1, "%" + tag + "%");
+            ResultSet rs = getPaperFromTags.executeQuery();
+            while(rs.next()){
+                ScientificWork temp = getPaperFromResultSet(rs);
+                List<Author> list = getAuthorsFromPaperId(rs.getInt(1));
+                temp.setAuthors(list);
+                ret.add(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return ret;
     }
 }

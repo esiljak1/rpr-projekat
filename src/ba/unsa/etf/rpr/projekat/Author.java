@@ -10,6 +10,11 @@ public class Author extends Person {
         this.university = university;
     }
 
+    public Author(int id, String firstname, String lastname, int age, Gender gender, String university) {
+        super(id, firstname, lastname, age, gender);
+        this.university = university;
+    }
+
     public String getUniversity() {
         return university;
     }

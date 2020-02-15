@@ -24,13 +24,13 @@ public class AddPaperController {
     public Button tagsBtn;
     public Button addAuthorsBtn;
     public TextField fileTxt;
-    public ListView<Person> listAuthors;
+    public ListView<Author> listAuthors;
     public CheckBox checkAuthor;
 
     private File selectedFile = null;
     private User user = null;
     private ScientificWork paper = null;
-    private ObservableList<Person> authors = FXCollections.observableArrayList();
+    private ObservableList<Author> authors = FXCollections.observableArrayList();
     private String tags = null;
 
     public AddPaperController(User user) {
