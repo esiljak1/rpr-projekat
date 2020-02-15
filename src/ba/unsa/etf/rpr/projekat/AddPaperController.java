@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -18,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 public class AddPaperController {
     public Button addFileBtn;
@@ -25,13 +23,15 @@ public class AddPaperController {
     public Button addAuthorsBtn;
     public TextField fileTxt;
     public ListView<Author> listAuthors;
+    public CheckBox checkAuthor;
 
     private File selectedFile = null;
-    private ScientificDAO instance = null;
+    private User user = null;
+    private ScientificWork paper = null;
     private ObservableList<Author> authors = FXCollections.observableArrayList();
 
-    public AddPaperController(ScientificDAO instance) {
-        this.instance = instance;
+    public AddPaperController(User user) {
+        this.user = user;
     }
 
     @FXML
@@ -87,12 +87,31 @@ public class AddPaperController {
             stage.show();
             stage.setOnHiding(windowEvent -> {
                 if(ctrl.getAuthor() != null){
-                    if(!instance.existsAuthor(ctrl.getAuthor().getFirstname(), ctrl.getAuthor().getLastname(), ctrl.getAuthor().getUniversity())){
-                        instance.addAuthor(ctrl.getAuthor()); // ne moze ovako, u bazu se treba tek na kraju dodati inace ako pokupim sve iz baze pokupit cu bukvalno sve iz baze
-                    }authors.addAll(instance.getAuthors());
+                    authors.add(ctrl.getAuthor());
                     listAuthors.setItems(authors);
                 }
             });
+        });
+        checkAuthor.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            Author author = new Author(user.getFirstname(), user.getLastname(), user.getAge(), user.getGender(), "");
+            if(newVal){
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setHeaderText("Please enter your university");
+                Optional<String> optional = dialog.showAndWait();
+                if(optional != null && !optional.get().trim().isEmpty()){
+                    author.setUniversity(optional.get());
+                    authors.add(author);
+                    listAuthors.setItems(authors);
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("There has been a problem, please try again");
+                    alert.show();
+                }
+            }else{
+                authors.removeIf(author1 -> author1.equals(author));
+                listAuthors.setItems(authors);
+            }
         });
     }
 

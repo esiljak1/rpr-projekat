@@ -69,7 +69,7 @@ public class SWWMainController {
                 stage.setResizable(false);
                 stage.show();
             }else{
-                AddPaperController ctrl = new AddPaperController(instance);
+                AddPaperController ctrl = new AddPaperController(currentUser);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddPaper.fxml"));
                 loader.setController(ctrl);
                 Parent root = null;

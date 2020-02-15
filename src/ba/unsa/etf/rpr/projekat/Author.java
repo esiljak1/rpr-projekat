@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.projekat;
 
+import java.util.Objects;
+
 public class Author extends Person {
     private String university;
 
@@ -20,5 +22,13 @@ public class Author extends Person {
     public String toString() {
         return super.getFirstname() + " " + super.getLastname() +
                " " + university;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(super.getFirstname(), author.getFirstname()) && Objects.equals(super.getLastname(), author.getLastname()) && Objects.equals(super.getAge(), author.getAge());
     }
 }
