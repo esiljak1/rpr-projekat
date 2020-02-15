@@ -10,8 +10,8 @@ public class ScientificWork {
 
     private void test(List<Person> list) throws IllegalUserException {
         for(Person p : list){
-            if(!(p instanceof User)){
-                throw new IllegalUserException("Author must be a registered user!");
+            if(!(p instanceof Author)){
+                throw new IllegalUserException("The person is not a registered author");
             }
         }
     }

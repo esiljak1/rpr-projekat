@@ -2,8 +2,10 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,13 +24,14 @@ public class AddPaperController {
     public Button tagsBtn;
     public Button addAuthorsBtn;
     public TextField fileTxt;
-    public ListView<Author> listAuthors;
+    public ListView<Person> listAuthors;
     public CheckBox checkAuthor;
 
     private File selectedFile = null;
     private User user = null;
     private ScientificWork paper = null;
-    private ObservableList<Author> authors = FXCollections.observableArrayList();
+    private ObservableList<Person> authors = FXCollections.observableArrayList();
+    private String tags = null;
 
     public AddPaperController(User user) {
         this.user = user;
@@ -69,6 +72,9 @@ public class AddPaperController {
             stage.setScene(new Scene(root, 300, 400));
             stage.setResizable(false);
             stage.show();
+            stage.setOnHiding(windowEvent -> {
+                tags = ctrl.getTags();
+            });
         });
         addAuthorsBtn.setOnAction(actionEvent -> {
             AddAuthorController ctrl = new AddAuthorController();
@@ -113,6 +119,29 @@ public class AddPaperController {
                 listAuthors.setItems(authors);
             }
         });
+    }
+
+    public void closeAction(ActionEvent actionEvent){
+        if(((Button)actionEvent.getSource()).getText().equals("Cancel")){
+            paper = null;
+        }else{
+            if(fileTxt != null && !fileTxt.getText().trim().isEmpty() && listAuthors.getItems().size() != 0 && tags != null){
+                String [] arr = tags.split(",");
+                try {
+                    paper = new ScientificWork(authors, fileTxt.getText(), arr);
+                } catch (IllegalUserException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Please fill in all of the fields including tags");
+                alert.show();
+                return;
+            }
+        }
+        Node node = (Node) actionEvent.getSource();
+        Stage st = (Stage) node.getScene().getWindow();
+        st.close();
     }
 
 }
