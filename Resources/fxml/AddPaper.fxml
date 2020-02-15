@@ -60,8 +60,8 @@
       </TextField>
       <ButtonBar maxHeight="48.0" prefHeight="48.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
         <buttons>
-          <Button fx:id="okBtn" mnemonicParsing="false" text="OK" />
-            <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" />
+          <Button fx:id="okBtn" mnemonicParsing="false" text="OK" onAction="#closeAction" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" onAction="#closeAction" />
         </buttons>
          <GridPane.margin>
             <Insets right="10.0" />
