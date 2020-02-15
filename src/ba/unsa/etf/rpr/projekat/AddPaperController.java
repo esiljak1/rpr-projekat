@@ -37,6 +37,14 @@ public class AddPaperController {
         this.user = user;
     }
 
+    public ScientificWork getPaper() {
+        return paper;
+    }
+
+    public void setPaper(ScientificWork paper) {
+        this.paper = paper;
+    }
+
     @FXML
     public void initialize(){
         addFileBtn.setOnAction(actionEvent -> {

@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
-    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId;
+    private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId,
+                                addAuthorForScWork, addScWork, getPaperId;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -32,6 +33,13 @@ public class ScientificDAO {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    private String getString (String[] arr){
+        String ret = "";
+        for(int i = 0; i < arr.length; i++){
+            ret += arr[i];
+            ret += " ";
+        }return ret;
     }
     public void napuni(){
         try {
@@ -70,10 +78,13 @@ public class ScientificDAO {
             getUserFromUsername = conn.prepareStatement("select * from users where username=?");
             getAuthorFromNameUni = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id and p.firstname=? and p.lastname=? and a.university=?");
             getAllAuthors = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id");
+            getPaperId = conn.prepareStatement("select max (id) + 1 from scworks");
 
             addUser = conn.prepareStatement("insert into users values (?,?,?,?,?)");
             addPerson = conn.prepareStatement("insert into person values (?,?,?,?,?)");
             addAuthor = conn.prepareStatement("insert into author values (?,?)");
+            addAuthorForScWork = conn.prepareStatement("insert into ScWorksAuthors values (?,?)");
+            addScWork = conn.prepareStatement("insert into ScWorks values (?,?,?)");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -138,16 +149,17 @@ public class ScientificDAO {
             e.printStackTrace();
         }return false;
     }
-    public boolean existsAuthor(String firstname, String lastname, String uni){
+    public int existsAuthor(String firstname, String lastname, String uni){
         try {
             getAuthorFromNameUni.setString(1, firstname);
             getAuthorFromNameUni.setString(2, lastname);
             getAuthorFromNameUni.setString(3, uni);
             ResultSet rs = getAuthorFromNameUni.executeQuery();
-            return rs.next();
+            if(!rs.next()) return -1;
+            return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
-        }return false;
+        }return -1;
     }
     public ArrayList<Author> getAuthors(){
         ArrayList<Author> ret = new ArrayList<>();
@@ -162,7 +174,7 @@ public class ScientificDAO {
             e.printStackTrace();
         }return ret;
     }
-    public void addAuthor(Author author){
+    public int addAuthor(Author author){
         int id = 0;
         try {
             ResultSet rs = getPersonId.executeQuery();
@@ -181,6 +193,32 @@ public class ScientificDAO {
             addAuthor.setInt(1, id);
             addAuthor.setString(2, author.getUniversity());
             addAuthor.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return id;
+    }
+    public int addPaperWork(ScientificWork paper){
+        int id = -1;
+        try {
+            ResultSet rs = getPaperId.executeQuery();
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            addScWork.setInt(1, id);
+            addScWork.setString(2, paper.getName());
+            addScWork.setString(3, getString(paper.getTags()));
+            addScWork.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return id;
+    }
+    public void addAuthorForScWork(int authorId, int paperId){
+        try {
+            addAuthorForScWork.setInt(1, paperId);
+            addAuthorForScWork.setInt(2, authorId);
+            addAuthorForScWork.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

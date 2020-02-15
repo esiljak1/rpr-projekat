@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SWWMainController {
     public ImageView imgLogo, imgUser;
@@ -25,6 +26,16 @@ public class SWWMainController {
 
     private User currentUser;
     private ScientificDAO instance = null;
+
+    private void checkAndAdd(List<Person> list, int paperId){
+        for(Person p : list){
+            int id = instance.existsAuthor(p.getFirstname(), p.getLastname(), ((Author) p).getUniversity());
+            if(id == -1){
+                id = instance.addAuthor(((Author) p));
+            }
+            instance.addAuthorForScWork(id, paperId);
+        }
+    }
 
     public SWWMainController(User u, ScientificDAO instance) {
         currentUser = u;
@@ -83,6 +94,12 @@ public class SWWMainController {
                 stage.setScene(new Scene(root, 400, 500));
                 stage.setResizable(false);
                 stage.show();
+                stage.setOnHiding(windowEvent -> {
+                    ScientificWork tmp = ctrl.getPaper();
+                    if(tmp != null){
+                        checkAndAdd(tmp.getAuthors(), instance.addPaperWork(tmp));
+                    }
+                });
             }
         });
     }

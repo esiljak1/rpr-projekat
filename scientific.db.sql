@@ -1,8 +1,8 @@
 BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS "ScWorks-Authors" (
+CREATE TABLE IF NOT EXISTS "ScWorksAuthors" (
 	"sc_id"	INTEGER,
 	"author_id"	INTEGER,
-	FOREIGN KEY("sc_id") REFERENCES "ScWorks-Authors",
+	FOREIGN KEY("sc_id") REFERENCES "ScWorksAuthors",
 	FOREIGN KEY("author_id") REFERENCES "Author"("id")
 );
 CREATE TABLE IF NOT EXISTS "ScWorks" (
