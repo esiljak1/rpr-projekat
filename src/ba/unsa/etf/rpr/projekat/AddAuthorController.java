@@ -31,7 +31,7 @@ public class AddAuthorController {
         field.getStyleClass().add("poljeNijeIspravno");
     }
     private int getAge(LocalDate date){
-        int age = LocalDate.now().getYear() - date.getYear();
+        int age = LocalDate.now().getYear() - date.getYear() - 1;
         if(date.getMonthValue() > LocalDate.now().getMonthValue()){
             return age;
         }else if(date.getMonthValue() == LocalDate.now().getMonthValue()){

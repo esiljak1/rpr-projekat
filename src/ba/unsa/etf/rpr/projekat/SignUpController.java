@@ -33,7 +33,7 @@ public class SignUpController {
         }return false;
     }
     private int getAge(LocalDate date){
-        int age = LocalDate.now().getYear() - date.getYear();
+        int age = LocalDate.now().getYear() - date.getYear() - 1;
         if(date.getMonthValue() > LocalDate.now().getMonthValue()){
             return age;
         }else if(date.getMonthValue() == LocalDate.now().getMonthValue()){
@@ -119,7 +119,7 @@ public class SignUpController {
                     fldUsername.getStyleClass().removeAll("poljeIspravno");
                     fldUsername.getStyleClass().add("poljeNijeIspravno");
                 }
-                Gender g = choiceGender.equals("Male") ? Gender.MALE : Gender.FEMALE;
+                Gender g = choiceGender.getSelectionModel().getSelectedItem().equals("Male") ? Gender.MALE : Gender.FEMALE;
                 int age = getAge(dateDOB.getValue());
                 User user = new User(0, fldFirstname.getText(), fldLastname.getText(), age, g, fldUsername.getText(), fldPassword.getText(), fldMail.getText(), imgAvatar.getImage().getUrl());
                 instance.addUser(user);
