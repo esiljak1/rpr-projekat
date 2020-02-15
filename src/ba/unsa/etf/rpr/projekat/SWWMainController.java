@@ -115,6 +115,19 @@ public class SWWMainController {
                     list = instance.getWorksByTag(fldSearch.getText());
                     System.out.println("Pretraga po tagovima");
                 }
+                SearchPaperController ctrl = new SearchPaperController(list);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SearchPaper.fxml"));
+                loader.setController(ctrl);
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Stage stage = new Stage();
+                stage.setTitle("Search results");
+                stage.setScene(new Scene(root, 300, 300));
+                stage.show();
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
