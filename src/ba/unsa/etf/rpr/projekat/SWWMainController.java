@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -22,7 +20,8 @@ public class SWWMainController {
     public ImageView imgLogo, imgUser;
     public Label labelUser;
     public ChoiceBox<String> choiceCategory;
-    public Button btnAdd;
+    public Button btnAdd, searchBtn;
+    public TextField fldSearch;
 
     private User currentUser;
     private ScientificDAO instance = null;
@@ -100,6 +99,26 @@ public class SWWMainController {
                         checkAndAdd(tmp.getAuthors(), instance.addPaperWork(tmp));
                     }
                 });
+            }
+        });
+        searchBtn.setOnAction(actionEvent -> {
+            if(fldSearch != null && !fldSearch.getText().trim().isEmpty()){
+                //todo add search in database by name author and tags
+                if(choiceCategory.getSelectionModel().getSelectedItem().equals("Name")){
+                    //pretraga radova po imenu
+                    System.out.println("Pretraga po imenu");
+                }else if(choiceCategory.getSelectionModel().getSelectedItem().equals("Author")){
+                    //pretraga radova po autoru
+                    System.out.println("Pretraga po autoru");
+                }else{
+                    //pretraga radova po tagovima
+                    System.out.println("Pretraga po tagovima");
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Please enter the keywords into the search field");
+                alert.show();
             }
         });
     }
