@@ -39,7 +39,7 @@ public class ScientificDAO {
         String ret = "";
         for(int i = 0; i < arr.length; i++){
             ret += arr[i];
-            ret += " ";
+            ret += ",";
         }return ret;
     }
     private ScientificWork getPaperFromResultSet(ResultSet rs) throws SQLException, IllegalUserException {
@@ -88,9 +88,9 @@ public class ScientificDAO {
             getAuthorFromNameUni = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id and p.firstname=? and p.lastname=? and a.university=?");
             getAllAuthors = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id");
             getPaperId = conn.prepareStatement("select max (id) + 1 from scworks");
-            getPaperFromName = conn.prepareCall("select * from scworks where name like ?");
-            getPaperFromTags = conn.prepareCall("select * from scworks where tags like ?");
-            getPaperFromAuthor = conn.prepareStatement("select s.* from scworks s, ScWorksAuthors sa, authors a where s.id = sa.sc_id and a.id = sa.author_id and a.first_name || ' ' || a.lastname like ?");
+            getPaperFromTags = conn.prepareStatement("select * from ScWorks where tags like ?");
+            getPaperFromName = conn.prepareStatement("select * from ScWorks sc where sc.name like ?");
+            getPaperFromAuthor = conn.prepareStatement("select s.* from scworks s, ScWorksAuthors sa, Author a, Person p where s.id = sa.sc_id and a.id = sa.author_id and p.id = a.id and p.firstname || ' ' || p.lastname like ?");
             getAuthorsFromPaperId = conn.prepareStatement("select p.*, a.university from person p, author a, ScWorksAuthors sa where sa.sc_id=? and sa.author_id=a.id and a.id=p.id");
 
             addUser = conn.prepareStatement("insert into users values (?,?,?,?,?)");

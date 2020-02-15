@@ -104,14 +104,15 @@ public class SWWMainController {
         searchBtn.setOnAction(actionEvent -> {
             if(fldSearch != null && !fldSearch.getText().trim().isEmpty()){
                 //todo add search in database by name author and tags
+                List<ScientificWork> list = new ArrayList<>();
                 if(choiceCategory.getSelectionModel().getSelectedItem().equals("Name")){
-                    //pretraga radova po imenu
+                    list = instance.getWorksByName(fldSearch.getText());
                     System.out.println("Pretraga po imenu");
                 }else if(choiceCategory.getSelectionModel().getSelectedItem().equals("Author")){
-                    //pretraga radova po autoru
+                    list = instance.getWorksByAuthor(fldSearch.getText());
                     System.out.println("Pretraga po autoru");
                 }else{
-                    //pretraga radova po tagovima
+                    list = instance.getWorksByTag(fldSearch.getText());
                     System.out.println("Pretraga po tagovima");
                 }
             }else{
