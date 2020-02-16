@@ -19,12 +19,12 @@
             <Insets left="100.0" right="5.0" top="15.0" />
          </GridPane.margin>
       </TextField>
-      <Label text="Username:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label text="%username" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="15.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Password:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Label text="%password" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="20.0" left="10.0" right="10.0" />
          </GridPane.margin>
@@ -34,20 +34,20 @@
             <Insets bottom="15.0" left="100.0" right="5.0" />
          </GridPane.margin>
       </PasswordField>
-      <Label text="Don't have an account yet?" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Label text="%noAccount" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="5.0" left="10.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="signUpBtn" mnemonicParsing="false" text="Sign up" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Button fx:id="signUpBtn" mnemonicParsing="false" text="%signUp" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="5.0" right="80.0" />
          </GridPane.margin>
       </Button>
       <ButtonBar maxHeight="50.0" prefHeight="84.0" prefWidth="600.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <buttons>
-            <Button fx:id="okBtn" mnemonicParsing="false" text="OK" />
-          <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="okBtn" mnemonicParsing="false" text="%ok" />
+          <Button fx:id="cancelBtn" mnemonicParsing="false" text="%cancel" />
         </buttons>
          <GridPane.margin>
             <Insets left="100.0" right="150.0" />

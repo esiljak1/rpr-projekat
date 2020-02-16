@@ -7,7 +7,7 @@
 <?import java.net.URL?>
 <GridPane fx:id="gridSWWMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
   <stylesheets>
-      <URL value="@/css/MainWindowStyle.css"/>
+      <URL value="@/css/MainWindowStyle.css" />
   </stylesheets>
     <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="165.0" />
@@ -21,37 +21,37 @@
   </rowConstraints>
    <children>
       <TextField fx:id="fldSearch" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label text="Search" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label text="%search" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin>
       </Label>
       <ChoiceBox fx:id="choiceCategory" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-      <Label text="Select a category to search by" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Label text="%selectCategory" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="searchBtn" maxWidth="60.0" mnemonicParsing="false" text="Search" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="searchBtn" maxWidth="60.0" mnemonicParsing="false" text="%search" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <MenuBar GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="%file">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Print" />
-              <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="My profile" />
-                  <Menu mnemonicParsing="false" text="Languages">
+                  <MenuItem fx:id="itemPrint" mnemonicParsing="false" text="%print" />
+              <MenuItem fx:id="itemClose" mnemonicParsing="false" onAction="#closeAction" text="%close" />
+                  <MenuItem fx:id="itemProfile" mnemonicParsing="false" text="%profile" />
+                  <Menu mnemonicParsing="false" text="%languages">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="English" />
-                        <MenuItem mnemonicParsing="false" text="Bosanski" />
+                      <MenuItem fx:id="itemEnglish" mnemonicParsing="false" text="English" />
+                        <MenuItem fx:id="itemBosanski" mnemonicParsing="false" text="Bosanski" />
                     </items>
                   </Menu>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="%help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Instructions" />
+              <MenuItem fx:id="itemAbout" mnemonicParsing="false" text="%about" />
+                  <MenuItem fx:id="itemInstructions" mnemonicParsing="false" text="%instructions" />
             </items>
           </Menu>
         </menus>
@@ -67,6 +67,6 @@
          </GridPane.margin>
       </Label>
       <ImageView fx:id="imgUser" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button fx:id="btnAdd" maxWidth="60.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Button fx:id="btnAdd" maxWidth="60.0" mnemonicParsing="false" text="%add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

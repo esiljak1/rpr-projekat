@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class LogScreenController {
     public TextField fldUsername;
@@ -53,7 +54,8 @@ public class LogScreenController {
                 return;
             }
             SWWMainController ctrl = new SWWMainController(user, instance);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
             try {
@@ -80,7 +82,8 @@ public class LogScreenController {
 
         signUpBtn.setOnAction(actionEvent -> {
             SignUpController ctrl = new SignUpController(instance);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreen.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreen.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
             try {

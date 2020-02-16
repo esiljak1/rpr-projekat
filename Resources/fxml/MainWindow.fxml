@@ -21,12 +21,12 @@
     <RowConstraints maxHeight="61.6" minHeight="10.0" prefHeight="45.6" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAction" text="LOGIN" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+      <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAction" text="%login" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
          <GridPane.margin>
             <Insets bottom="2.0" left="10.0" right="2.0" top="2.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="guestBtn" mnemonicParsing="false" text="CONTINUE AS GUEST" GridPane.halignment="RIGHT" GridPane.rowIndex="4" onAction="#guestAction">
+      <Button fx:id="guestBtn" mnemonicParsing="false" onAction="#guestAction" text="%continueGuest" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
@@ -40,7 +40,7 @@
          <GridPane.margin>
             <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></ImageView>
-      <Label fx:id="welcomeMsg" text="Welcome to SWW" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label fx:id="welcomeMsg" text="%welcome" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets top="28.0" />
          </GridPane.margin></Label>

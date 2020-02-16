@@ -17,9 +17,9 @@
    <children>
       <TableView fx:id="tableScWorks" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
         <columns>
-          <TableColumn fx:id="columnName" prefWidth="118.0" text="Name" />
-          <TableColumn fx:id="columnAuthors" prefWidth="137.0" text="Authors" />
-            <TableColumn fx:id="columnTags" prefWidth="133.0" text="Tags" />
+          <TableColumn fx:id="columnName" prefWidth="118.0" text="%name" />
+          <TableColumn fx:id="columnAuthors" prefWidth="137.0" text="%authors" />
+            <TableColumn fx:id="columnTags" prefWidth="133.0" text="%tags" />
         </columns>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" />

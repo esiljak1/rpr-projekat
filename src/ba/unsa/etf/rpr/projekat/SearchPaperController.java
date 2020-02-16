@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class SearchPaperController {
     private ObservableList<ScientificWork> list = FXCollections.observableArrayList();
@@ -33,7 +34,8 @@ public class SearchPaperController {
 
         tableScWorks.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             ReadDocumentController ctrl = new ReadDocumentController(newVal.getName());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReadDocument.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReadDocument.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
             try {

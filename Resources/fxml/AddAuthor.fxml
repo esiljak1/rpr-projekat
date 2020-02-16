@@ -42,37 +42,37 @@
             <Insets left="100.0" right="10.0" top="170.0" />
          </GridPane.margin>
       </TextField>
-      <Label text="Firstname" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label text="%firstname" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Lastname" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label text="%lastname" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="50.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Date of birth" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label text="%birthDate" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="90.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Gender" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label text="%gender" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="130.0" />
          </GridPane.margin>
       </Label>
-      <Label text="University" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label text="%uni" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="170.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="okBtn" maxWidth="50.0" mnemonicParsing="false" onAction="#actionClose" text="OK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="okBtn" maxWidth="50.0" mnemonicParsing="false" onAction="#actionClose" text="%ok" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets right="100.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#actionClose" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#actionClose" text="%cancel" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="100.0" />
          </GridPane.margin>

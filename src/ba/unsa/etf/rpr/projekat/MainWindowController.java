@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class MainWindowController {
     public ImageView imgLogo;
@@ -25,7 +26,8 @@ public class MainWindowController {
 
     public void loginAction(ActionEvent actionEvent){
         LogScreenController ctrl = new LogScreenController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen.fxml"), bundle);
         loader.setController(ctrl);
         Parent root = null;
         try {
@@ -46,7 +48,8 @@ public class MainWindowController {
     }
     public void guestAction(ActionEvent actionEvent){
         SWWMainController ctrl = new SWWMainController(null, ScientificDAO.getInstance());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"), bundle);
         loader.setController(ctrl);
         Parent root = null;
         try {

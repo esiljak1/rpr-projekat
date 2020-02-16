@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class UserProfileController {
     public Button editBtn, backBtn, closeBtn, okBtn, cancelBtn;
@@ -174,7 +175,8 @@ public class UserProfileController {
             Node node = (Node) actionEvent.getSource();
             Stage st = (Stage) node.getScene().getWindow();
             SWWMainController ctrl = new SWWMainController(user, instance);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
             try {

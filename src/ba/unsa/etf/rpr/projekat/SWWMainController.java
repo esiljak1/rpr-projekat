@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.projekat;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,12 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class SWWMainController {
     public ImageView imgLogo, imgUser;
@@ -23,6 +26,9 @@ public class SWWMainController {
     public ChoiceBox<String> choiceCategory;
     public Button btnAdd, searchBtn;
     public TextField fldSearch;
+    public GridPane gridSWWMain;
+
+    public MenuItem itemPrint, itemProfile, itemEnglish, itemBosanski, itemAbout, itemInstructions;
 
     private User currentUser;
     private ScientificDAO instance = null;
@@ -35,6 +41,23 @@ public class SWWMainController {
             }
             instance.addAuthorForScWork(id, paperId);
         }
+    }
+    private void profileLoader(){
+        UserProfileController ctrl = new UserProfileController(currentUser, instance);
+        ResourceBundle bundle = ResourceBundle.getBundle("translation");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserProfile.fxml"), bundle);
+        loader.setController(ctrl);
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("User");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.setResizable(false);
+        stage.show();
     }
 
     public SWWMainController(User u, ScientificDAO instance) {
@@ -54,23 +77,10 @@ public class SWWMainController {
         imgUser.setImage(new Image(new File("@/../Resources/images/default.jpg").toURI().toString(), 150, 150, false, false));
         imgUser.setOnMouseClicked((handle) -> {
             //todo otvoriti user profil gdje se moze izmedju ostalog promijeniti slika
-            UserProfileController ctrl = new UserProfileController(currentUser, instance);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserProfile.fxml"));
-            loader.setController(ctrl);
-            Parent root = null;
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Stage stage = new Stage();
-            stage.setTitle("User");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setResizable(false);
+            profileLoader();
             Node node = (Node) handle.getSource();
             Stage st = (Stage) node.getScene().getWindow();
             st.close();
-            stage.show();
         });
         ArrayList<String> arr = new ArrayList<>();
         arr.add("Name");
@@ -83,7 +93,8 @@ public class SWWMainController {
         btnAdd.setOnAction(actionEvent -> {
             if(!(currentUser instanceof User)){
                 LogScreenController ctrl = new LogScreenController();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen.fxml"));
+                ResourceBundle bundle = ResourceBundle.getBundle("translation");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginScreen.fxml"), bundle);
                 loader.setController(ctrl);
                 Parent root = null;
                 try {
@@ -98,7 +109,8 @@ public class SWWMainController {
                 stage.show();
             }else{
                 AddPaperController ctrl = new AddPaperController(currentUser);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddPaper.fxml"));
+                ResourceBundle bundle = ResourceBundle.getBundle("translation");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddPaper.fxml"), bundle);
                 loader.setController(ctrl);
                 Parent root = null;
                 try {
@@ -134,7 +146,8 @@ public class SWWMainController {
                     System.out.println("Pretraga po tagovima");
                 }
                 SearchPaperController ctrl = new SearchPaperController(list);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SearchPaper.fxml"));
+                ResourceBundle bundle = ResourceBundle.getBundle("translation");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SearchPaper.fxml"), bundle);
                 loader.setController(ctrl);
                 Parent root = null;
                 try {
@@ -153,5 +166,13 @@ public class SWWMainController {
                 alert.show();
             }
         });
+        itemProfile.setOnAction(actionEvent -> {
+            Stage st = (Stage) gridSWWMain.getScene().getWindow();
+            st.close();
+            profileLoader();
+        });
+    }
+    public void closeAction(ActionEvent actionEvent){
+        System.exit(0);
     }
 }

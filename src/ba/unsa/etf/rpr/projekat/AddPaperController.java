@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class AddPaperController {
     public Button addFileBtn;
@@ -67,7 +68,8 @@ public class AddPaperController {
         });
         tagsBtn.setOnAction(actionEvent -> {
             TagsController ctrl = new TagsController();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Tags.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Tags.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
             try {
@@ -86,7 +88,8 @@ public class AddPaperController {
         });
         addAuthorsBtn.setOnAction(actionEvent -> {
             AddAuthorController ctrl = new AddAuthorController();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddAuthor.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddAuthor.fxml"), bundle);
             loader.setController(ctrl);
             Parent root = null;
             try {
