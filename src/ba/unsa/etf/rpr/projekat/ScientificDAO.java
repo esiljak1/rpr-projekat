@@ -11,7 +11,7 @@ public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
     private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId,
-                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId;
+                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId, updateUser, updatePerson;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -98,6 +98,9 @@ public class ScientificDAO {
             addAuthor = conn.prepareStatement("insert into author values (?,?)");
             addAuthorForScWork = conn.prepareStatement("insert into ScWorksAuthors values (?,?)");
             addScWork = conn.prepareStatement("insert into ScWorks values (?,?,?)");
+
+            updateUser = conn.prepareStatement("UPDATE Users set username=?, password=?, mail=? where id = ?");
+            updatePerson = conn.prepareStatement("UPDATE Person set firstname=?, lastname=?, age=?, gender=? where id = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -293,5 +296,23 @@ public class ScientificDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }return ret;
+    }
+    public void updateUser(User user){
+        try {
+            updatePerson.setString(1, user.getFirstname());
+            updatePerson.setString(2, user.getLastname());
+            updatePerson.setInt(3, user.getAge());
+            updatePerson.setString(4, user.getGender().equals(Gender.MALE) ? "m" : "f");
+            updatePerson.setInt(5, user.getId());
+            updatePerson.executeUpdate();
+
+            updateUser.setString(1, user.getUsername());
+            updateUser.setString(2, user.getPassword());
+            updateUser.setString(3, user.getEmail());
+            updateUser.setInt(4, user.getId());
+            updateUser.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

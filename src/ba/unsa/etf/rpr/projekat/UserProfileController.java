@@ -55,9 +55,6 @@ public class UserProfileController {
         okBtn.setVisible(!visible);
         cancelBtn.setVisible(!visible);
     }
-    private void updateUser(){
-        //updating user
-    }
 
     @FXML
     public void initialize(){
@@ -167,13 +164,13 @@ public class UserProfileController {
             setEditable(false);
         });
         closeBtn.setOnAction(actionEvent -> {
-            updateUser();
+            instance.updateUser(user);
             Node node = (Node) actionEvent.getSource();
             Stage st = (Stage) node.getScene().getWindow();
             st.close();
         });
         backBtn.setOnAction(actionEvent -> {
-            updateUser();
+            instance.updateUser(user);
             Node node = (Node) actionEvent.getSource();
             Stage st = (Stage) node.getScene().getWindow();
             SWWMainController ctrl = new SWWMainController(user, instance);
