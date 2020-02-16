@@ -42,8 +42,8 @@
                   <MenuItem fx:id="itemProfile" mnemonicParsing="false" text="%profile" />
                   <Menu mnemonicParsing="false" text="%languages">
                     <items>
-                      <MenuItem fx:id="itemEnglish" mnemonicParsing="false" text="English" />
-                        <MenuItem fx:id="itemBosanski" mnemonicParsing="false" text="Bosanski" />
+                        <RadioMenuItem fx:id="itemEnglish" mnemonicParsing="false" text="English" />
+                        <RadioMenuItem fx:id="itemBosanski" mnemonicParsing="false" text="Bosanski" />
                     </items>
                   </Menu>
             </items>

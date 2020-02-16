@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SWWMainController {
@@ -28,7 +29,8 @@ public class SWWMainController {
     public TextField fldSearch;
     public GridPane gridSWWMain;
 
-    public MenuItem itemPrint, itemProfile, itemEnglish, itemBosanski, itemAbout, itemInstructions;
+    public MenuItem itemPrint, itemProfile, itemAbout, itemInstructions;
+    public RadioMenuItem itemEnglish, itemBosanski;
 
     private User currentUser;
     private ScientificDAO instance = null;
@@ -68,6 +70,13 @@ public class SWWMainController {
     @FXML
     public void initialize(){
         imgLogo.setImage(new Image(new File("@/../Resources/images/logo.png").toURI().toString(), 300, 250, false, false));
+        if(Locale.getDefault().equals(new Locale("bs", "BA"))){
+            itemBosanski.setSelected(true);
+            itemEnglish.setSelected(false);
+        }else{
+            itemEnglish.setSelected(true);
+            itemBosanski.setSelected(false);
+        }
         if(currentUser == null){
             labelUser.setText("Currently searching as guest");
         }else {
@@ -77,6 +86,7 @@ public class SWWMainController {
         imgUser.setImage(new Image(new File("@/../Resources/images/default.jpg").toURI().toString(), 150, 150, false, false));
         imgUser.setOnMouseClicked((handle) -> {
             //todo otvoriti user profil gdje se moze izmedju ostalog promijeniti slika
+            if(currentUser == null) return;
             profileLoader();
             Node node = (Node) handle.getSource();
             Stage st = (Stage) node.getScene().getWindow();
@@ -167,9 +177,52 @@ public class SWWMainController {
             }
         });
         itemProfile.setOnAction(actionEvent -> {
+            if(currentUser == null) return;
             Stage st = (Stage) gridSWWMain.getScene().getWindow();
             st.close();
             profileLoader();
+        });
+        itemBosanski.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            if(newVal){
+                itemEnglish.setSelected(false);
+                Locale.setDefault(new Locale("bs", "BA"));
+                Scene scene = gridSWWMain.getScene();
+                SWWMainController kontroler = new SWWMainController(currentUser, instance);
+                ResourceBundle bundle = ResourceBundle.getBundle("translation");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"), bundle);
+                loader.setController(kontroler);
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                scene.setRoot(root);
+            }else if(oldVal && !itemEnglish.isSelected()){
+                itemBosanski.setSelected(true);
+            }
+        });
+        itemEnglish.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            if(newVal){
+                itemBosanski.setSelected(false);
+                Locale.setDefault(new Locale("en", "US"));
+                Scene scene = gridSWWMain.getScene();
+                SWWMainController kontroler = new SWWMainController(currentUser, instance);
+                ResourceBundle bundle = ResourceBundle.getBundle("translation");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SWWMain.fxml"), bundle);
+                loader.setController(kontroler);
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                scene.setRoot(root);
+            }else if(oldVal && !itemBosanski.isSelected()){
+                itemEnglish.setSelected(true);
+            }
         });
     }
     public void closeAction(ActionEvent actionEvent){
