@@ -11,32 +11,107 @@
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="152.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <TextField fx:id="fldFirstname" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" top="10.0" />
          </GridPane.margin></TextField>
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <TextField fx:id="fldLastname" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" top="50.0" />
          </GridPane.margin></TextField>
-      <Slider blockIncrement="1.0" max="120.0" min="1.0" minorTickCount="13" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Slider fx:id="slideAge" blockIncrement="1.0" disable="true" max="120.0" min="1.0" minorTickCount="13" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="20.0" right="100.0" top="90.0" />
          </GridPane.margin>
       </Slider>
-      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <TextField fx:id="fldAge" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="220.0" right="10.0" top="85.0" />
          </GridPane.margin>
       </TextField>
-      <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <ChoiceBox fx:id="choiceGender" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="120.0" />
          </GridPane.margin>
       </ChoiceBox>
+      <TextField fx:id="fldMail" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="fldUsername" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" top="50.0" />
+         </GridPane.margin>
+      </TextField>
+      <PasswordField fx:id="fldPassword" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" right="10.0" top="90.0" />
+         </GridPane.margin>
+      </PasswordField>
+      <Label text="Firstname" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Lastname" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Age" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="90.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Gender" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="130.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Email" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Username" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Password" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="10.0" top="90.0" />
+         </GridPane.margin>
+      </Label>
+      <Button fx:id="editBtn" maxWidth="55.0" mnemonicParsing="false" text="Edit" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="30.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="backBtn" maxWidth="55.0" mnemonicParsing="false" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="122.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="closeBtn" maxWidth="55.0" mnemonicParsing="false" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets right="30.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="okBtn" maxWidth="55.0" mnemonicParsing="false" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="80.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets right="80.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>

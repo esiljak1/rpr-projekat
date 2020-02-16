@@ -53,6 +53,20 @@ public class SWWMainController {
         imgUser.setImage(new Image(new File("@/../Resources/images/default.jpg").toURI().toString(), 150, 150, false, false));
         imgUser.setOnMouseClicked((handle) -> {
             //todo otvoriti user profil gdje se moze izmedju ostalog promijeniti slika
+            UserProfileController ctrl = new UserProfileController(currentUser);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserProfile.fxml"));
+            loader.setController(ctrl);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("User");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setResizable(false);
+            stage.show();
         });
         ArrayList<String> arr = new ArrayList<>();
         arr.add("Name");
