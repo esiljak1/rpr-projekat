@@ -1,14 +1,24 @@
 package ba.unsa.etf.rpr.projekat;
 
-public class User extends Person{
+public class User implements Person{
+    private String firstname, lastname;
+    private int age;
+    private Gender gender;
+    private int id;
     private String username, password, email, image;
 
     public User(String firstname, String lastname, int age, Gender gender) {
-        super(firstname, lastname, age, gender);
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.gender = gender;
     }
 
     public User(int id, String firstname, String lastname, int age, Gender gender, String username, String password, String email, String image) {
-        super(id, firstname, lastname, age, gender);
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.gender = gender;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -45,5 +55,55 @@ public class User extends Person{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getFirstname() {
+        return firstname;
+    }
+
+    @Override
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    @Override
+    public String getLastname() {
+        return lastname;
+    }
+
+    @Override
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    @Override
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public Gender getGender() {
+        return gender;
+    }
+
+    @Override
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

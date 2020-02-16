@@ -1,65 +1,24 @@
 package ba.unsa.etf.rpr.projekat;
 
-public class Person {
-    private String firstname, lastname;
-    private int age;
-    private Gender gender;
-    private int id;
+public interface Person {
 
-    public int getId() {
-        return id;
-    }
+    public int getId();
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id);
 
-    public Person(int id, String firstname, String lastname, int age, Gender gender) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-        this.gender = gender;
-        this.id = id;
-    }
+    public String getFirstname();
 
-    public Person(String firstname, String lastname, int age, Gender gender) {
-        if(age <= 0) throw new IllegalArgumentException("Age must be positive!!");
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-        this.gender = gender;
-    }
+    public void setFirstname(String firstname);
 
-    public String getFirstname() {
-        return firstname;
-    }
+    public String getLastname();
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+    public void setLastname(String lastname);
 
-    public String getLastname() {
-        return lastname;
-    }
+    public int getAge();
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+    public void setAge(int age);
 
-    public int getAge() {
-        return age;
-    }
+    public Gender getGender();
 
-    public void setAge(int age) {
-        if(age <= 0) throw new IllegalArgumentException("Age must be positive!!");
-        this.age = age;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+    public void setGender(Gender gender);
 }

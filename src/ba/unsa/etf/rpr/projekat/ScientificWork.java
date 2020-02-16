@@ -7,6 +7,7 @@ public class ScientificWork {
     private List<Author> authors;
     private String name;
     private String[] tags;
+    private double rating;
 
     private void test(List<Person> list) throws IllegalUserException {
         for(Person p : list){
@@ -21,6 +22,7 @@ public class ScientificWork {
         this.authors = authors;
         this.name = name;
         this.tags = tags;
+        this.rating = 0;
     }
 
     public ScientificWork(List<Author> authors, String name, String[] tags) throws IllegalUserException {
@@ -28,6 +30,7 @@ public class ScientificWork {
         this.authors = authors;
         this.name = name;
         this.tags = tags;
+        this.rating = 0;
     }
 
     public int getId() {
@@ -61,5 +64,13 @@ public class ScientificWork {
 
     public void setTags(String[] tags) {
         this.tags = tags;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }
