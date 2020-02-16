@@ -18,6 +18,17 @@ public class User implements Person{
         this.age = new SimpleIntegerProperty(age);
         this.gender = new SimpleObjectProperty<>(gender);
     }
+    public User(){
+        firstname = new SimpleStringProperty();
+        lastname = new SimpleStringProperty();
+        age = new SimpleIntegerProperty();
+        gender = new SimpleObjectProperty<>();
+        id = 0;
+        username = new SimpleStringProperty();
+        password = new SimpleStringProperty();
+        email = new SimpleStringProperty();
+        image = new String();
+    }
 
     public User(int id, String firstname, String lastname, int age, Gender gender, String username, String password, String email, String image) {
         this.id = id;
