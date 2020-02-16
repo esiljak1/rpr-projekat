@@ -1,52 +1,58 @@
 package ba.unsa.etf.rpr.projekat;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class User implements Person{
-    private String firstname, lastname;
-    private int age;
-    private Gender gender;
+    private SimpleStringProperty firstname, lastname;
+    private SimpleIntegerProperty age;
+    private SimpleObjectProperty<Gender> gender;
     private int id;
-    private String username, password, email, image;
+    private SimpleStringProperty username, password, email;
+    private String image;
 
     public User(String firstname, String lastname, int age, Gender gender) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-        this.gender = gender;
+        this.firstname = new SimpleStringProperty(firstname);
+        this.lastname = new SimpleStringProperty(lastname);
+        this.age = new SimpleIntegerProperty(age);
+        this.gender = new SimpleObjectProperty<>(gender);
     }
 
     public User(int id, String firstname, String lastname, int age, Gender gender, String username, String password, String email, String image) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-        this.gender = gender;
-        this.username = username;
-        this.password = password;
-        this.email = email;
+        this.id = id;
+        this.firstname = new SimpleStringProperty(firstname);
+        this.lastname = new SimpleStringProperty(lastname);
+        this.age = new SimpleIntegerProperty(age);
+        this.gender = new SimpleObjectProperty<>(gender);
+        this.username = new SimpleStringProperty(username);
+        this.password = new SimpleStringProperty(password);
+        this.email = new SimpleStringProperty(email);
         this.image = image;
     }
 
     public String getUsername() {
-        return username;
+        return username.get();
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username.set(username);
     }
 
     public String getPassword() {
-        return password;
+        return password.get();
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password.set(password);
     }
 
     public String getEmail() {
-        return email;
+        return email.get();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email.set(email);
     }
 
     public String getImage() {
@@ -69,41 +75,69 @@ public class User implements Person{
 
     @Override
     public String getFirstname() {
-        return firstname;
+        return firstname.get();
     }
 
     @Override
     public void setFirstname(String firstname) {
-        this.firstname = firstname;
+        this.firstname.set(firstname);
     }
 
     @Override
     public String getLastname() {
-        return lastname;
+        return lastname.get();
     }
 
     @Override
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastname.set(lastname);
     }
 
     @Override
     public int getAge() {
-        return age;
+        return age.get();
     }
 
     @Override
     public void setAge(int age) {
-        this.age = age;
+        this.age.set(age);
     }
 
     @Override
     public Gender getGender() {
-        return gender;
+        return gender.get();
     }
 
     @Override
     public void setGender(Gender gender) {
-        this.gender = gender;
+        this.gender.set(gender);
+    }
+
+    public SimpleStringProperty firstnameProperty() {
+        return firstname;
+    }
+
+    public SimpleStringProperty lastnameProperty() {
+        return lastname;
+    }
+
+    public SimpleIntegerProperty ageProperty() {
+        return age;
+    }
+
+    public SimpleObjectProperty<Gender> genderProperty() {
+        return gender;
+    }
+
+    public SimpleStringProperty usernameProperty() {
+        return username;
+    }
+
+    public SimpleStringProperty passwordProperty() {
+        return password;
+    }
+
+    public SimpleStringProperty emailProperty() {
+        return email;
     }
 }
