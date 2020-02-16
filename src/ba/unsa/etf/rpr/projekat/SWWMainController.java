@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -53,7 +54,7 @@ public class SWWMainController {
         imgUser.setImage(new Image(new File("@/../Resources/images/default.jpg").toURI().toString(), 150, 150, false, false));
         imgUser.setOnMouseClicked((handle) -> {
             //todo otvoriti user profil gdje se moze izmedju ostalog promijeniti slika
-            UserProfileController ctrl = new UserProfileController(currentUser);
+            UserProfileController ctrl = new UserProfileController(currentUser, instance);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserProfile.fxml"));
             loader.setController(ctrl);
             Parent root = null;
@@ -66,6 +67,9 @@ public class SWWMainController {
             stage.setTitle("User");
             stage.setScene(new Scene(root, 600, 400));
             stage.setResizable(false);
+            Node node = (Node) handle.getSource();
+            Stage st = (Stage) node.getScene().getWindow();
+            st.close();
             stage.show();
         });
         ArrayList<String> arr = new ArrayList<>();
