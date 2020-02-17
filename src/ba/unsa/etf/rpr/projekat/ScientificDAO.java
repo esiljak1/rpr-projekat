@@ -88,9 +88,9 @@ public class ScientificDAO {
             getAuthorFromNameUni = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id and p.firstname=? and p.lastname=? and a.university=?");
             getAllAuthors = conn.prepareStatement("select p.*, a.university from person p, author a where a.id = p.id");
             getPaperId = conn.prepareStatement("select max (id) + 1 from scworks");
-            getPaperFromTags = conn.prepareStatement("select * from ScWorks where tags like ?");
-            getPaperFromName = conn.prepareStatement("select * from ScWorks sc where sc.name like ?");
-            getPaperFromAuthor = conn.prepareStatement("select s.* from scworks s, ScWorksAuthors sa, Author a, Person p where s.id = sa.sc_id and a.id = sa.author_id and p.id = a.id and p.firstname || ' ' || p.lastname like ?");
+            getPaperFromTags = conn.prepareStatement("select distinct * from ScWorks where tags like ?");
+            getPaperFromName = conn.prepareStatement("select distinct * from ScWorks sc where sc.name like ?");
+            getPaperFromAuthor = conn.prepareStatement("select distinct s.* from scworks s, ScWorksAuthors sa, Author a, Person p where s.id = sa.sc_id and a.id = sa.author_id and p.id = a.id and p.firstname || ' ' || p.lastname like ?");
             getAuthorsFromPaperId = conn.prepareStatement("select p.*, a.university from person p, author a, ScWorksAuthors sa where sa.sc_id=? and sa.author_id=a.id and a.id=p.id");
             getGrade = conn.prepareStatement("select avg(grade) from Rating where paper_id=?");
 
@@ -322,8 +322,8 @@ public class ScientificDAO {
     }
     public void addGrade(ScientificWork paper, User user, int grade){
         try {
-            addGrade.setInt(1, paper.getId());
-            addGrade.setInt(2, user.getId());
+            addGrade.setInt(1, user.getId());
+            addGrade.setInt(2, paper.getId());
             addGrade.setInt(3, grade);
             addGrade.executeUpdate();
         } catch (SQLException e) {
@@ -338,5 +338,9 @@ public class ScientificDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }return 0;
+    }
+
+    public Connection getConn() {
+        return conn;
     }
 }

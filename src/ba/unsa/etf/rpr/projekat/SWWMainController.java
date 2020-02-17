@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.File;
 import java.io.IOException;
@@ -222,6 +223,13 @@ public class SWWMainController {
                 scene.setRoot(root);
             }else if(oldVal && !itemBosanski.isSelected()){
                 itemEnglish.setSelected(true);
+            }
+        });
+        itemPrint.setOnAction(actionEvent -> {
+            try {
+                new PrintReport().showReport(instance.getConn());
+            } catch (JRException e) {
+                e.printStackTrace();
             }
         });
     }

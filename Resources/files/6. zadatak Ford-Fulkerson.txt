@@ -1,0 +1,270 @@
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+Greska kod ovih simetricnih sa inf, nije inf nego normalni brojevi idu lp
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0 & S1  & S2                          & S3  & R1  & R2                         & R3 & R4  & R5  & R6  & R7 & R8                         & K                          &      \\ \hline
+S0 &    & inf & \cellcolor[HTML]{9B9B9B}inf & inf &     &                            &    &     &     &     &    &                            &                            & -/0  \\ \hline
+S1 &    &     &                             &     &     &                            &    &     & 100 &     &    &                            &                            & S0/1 \\ \hline
+S2 &    &     &                             &     &     &                            &    &     & 40  &     &    & \cellcolor[HTML]{9B9B9B}60 &                            & S0/1 \\ \hline
+S3 &    &     &                             &     &     &                            &    & 140 &     &     &    & 130                        &                            & S0/1 \\ \hline
+R1 &    &     &                             &     &     & 60                         &    &     &     &     & 30 &                            &                            & R4/3 \\ \hline
+R2 &    &     &                             &     &     &                            &    &     &     &     &    &                            & \cellcolor[HTML]{9B9B9B}60 & R8/3 \\ \hline
+R3 &    &     &                             &     &     & 150                        &    &     &     & 110 &    &                            &                            & R5/3 \\ \hline
+R4 &    &     &                             &     & 130 &                            &    &     &     &     &    & 60                         &                            & S3/2 \\ \hline
+R5 &    &     &                             &     &     &                            & 60 &     &     &     &    &                            &                            & S1/2 \\ \hline
+R6 &    &     &                             &     &     &                            &    &     &     &     &    &                            & 110                        & R6/4 \\ \hline
+R7 &    &     &                             &     &     &                            &    &     &     &     &    &                            & 50                         & R8/3 \\ \hline
+R8 &    &     &                             &     &     & \cellcolor[HTML]{9B9B9B}40 &    &     &     &     & 70 &                            &                            & S2/2 \\ \hline
+K  &    &     &                             &     &     &                            &    &     &     &     &    &                            &                            & R2/4 \\ \hline
+\end{tabular}
+\end{table}
+
+////////////////////////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2                          & S3  & R1  & R2                        & R3 & R4  & R5  & R6  & R7 & R8                         & K                          &      \\ \hline
+S0 &     & $\infty$ & \cellcolor[HTML]{9B9B9B}$\infty$ & $\infty$ &     &                           &    &     &     &     &    &                            &                            & -/0  \\ \hline
+S1 &     &     &                             &     &     &                           &    &     & 100 &     &    &                            &                            & S0/1 \\ \hline
+S2 & inf &     &                             &     &     &                           &    &     & 40  &     &    & \cellcolor[HTML]{9B9B9B}20 &                            & S0/1 \\ \hline
+S3 &     &     &                             &     &     &                           &    & 140 &     &     &    & 130                        &                            & S0/1 \\ \hline
+R1 &     &     &                             &     &     & 60                        &    &     &     &     & 30 &                            &                            & R4/3 \\ \hline
+R2 &     &     &                             &     &     &                           &    &     &     &     &    & 40                         & \cellcolor[HTML]{9B9B9B}20 & R8/3 \\ \hline
+R3 &     &     &                             &     &     & 150                       &    &     &     & 110 &    &                            &                            & R5/3 \\ \hline
+R4 &     &     &                             &     & 130 &                           &    &     &     &     &    & 60                         &                            & S3/2 \\ \hline
+R5 &     &     &                             &     &     &                           & 60 &     &     &     &    &                            &                            & S1/2 \\ \hline
+R6 &     &     &                             &     &     &                           &    &     &     &     &    &                            & 110                        & R6/4 \\ \hline
+R7 &     &     &                             &     &     &                           &    &     &     &     &    &                            & 50                         & R8/3 \\ \hline
+R8 &     &     & 40                          &     &     & \cellcolor[HTML]{9B9B9B}0 &    &     &     &     & 70 &                            &                            & S2/2 \\ \hline
+K  &     &     &                             &     &     & 40                        &    &     &     &     &    &                            &                            & R2/4 \\ \hline
+\end{tabular}
+\end{table}
+
+/////////////////////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2                          & S3  & R1  & R2                       & R3 & R4  & R5  & R6  & R7                         & R8                         & K                          &      \\ \hline
+S0 &     & $\infty$ & \cellcolor[HTML]{C0C0C0}$\infty$ & $\infty$ &     &                          &    &     &     &     &                            &                            &                            & -/0  \\ \hline
+S1 &     &     &                             &     &     &                          &    &     & 100 &     &                            &                            &                            & S0/1 \\ \hline
+S2 & inf &     &                             &     &     &                          &    &     & 40  &     &                            & \cellcolor[HTML]{C0C0C0}20 &                            & S0/1 \\ \hline
+S3 &     &     &                             &     &     &                          &    & 140 &     &     &                            & 130                        &                            & S0/1 \\ \hline
+R1 &     &     &                             &     &     & 60                       &    &     &     &     & 30                         &                            &                            & R4/3 \\ \hline
+R2 &     &     &                             &     &     &                          &    &     &     &     &                            & 40                         & \cellcolor[HTML]{FFFFFF}20 & R1/4 \\ \hline
+R3 &     &     &                             &     &     & 150                      &    &     &     & 110 &                            &                            &                            & R5/3 \\ \hline
+R4 &     &     &                             &     & 130 &                          &    &     &     &     &                            & 60                         &                            & S3/2 \\ \hline
+R5 &     &     &                             &     &     &                          & 60 &     &     &     &                            &                            &                            & S1/2 \\ \hline
+R6 &     &     &                             &     &     &                          &    &     &     &     &                            &                            & 110                        & R3/4 \\ \hline
+R7 &     &     &                             &     &     &                          &    &     &     &     &                            &                            & \cellcolor[HTML]{C0C0C0}50 & R8/3 \\ \hline
+R8 &     &     & 40                          &     &     & \cellcolor[HTML]{FFFFFF} &    &     &     &     & \cellcolor[HTML]{C0C0C0}70 &                            &                            & S2/2 \\ \hline
+K  &     &     &                             &     &     & 40                       &    &     &     &     &                            &                            &                            & R7/4 \\ \hline
+\end{tabular}
+\end{table}
+
+////////////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2                          & S3  & R1  & R2                       & R3 & R4  & R5  & R6  & R7                         & R8                        & K                          &      \\ \hline
+S0 &     & $\infty$ & \cellcolor[HTML]{C0C0C0}$\infty$ & $\infty$ &     &                          &    &     &     &     &                            &                           &                            & -/0  \\ \hline
+S1 &     &     &                             &     &     &                          &    &     & 100 &     &                            &                           &                            & S0/1 \\ \hline
+S2 & inf &     &                             &     &     &                          &    &     & 40  &     &                            & \cellcolor[HTML]{C0C0C0}0 &                            & S0/1 \\ \hline
+S3 &     &     &                             &     &     &                          &    & 140 &     &     &                            & 130                       &                            & S0/1 \\ \hline
+R1 &     &     &                             &     &     & 60                       &    &     &     &     & 30                         &                           &                            & R4/3 \\ \hline
+R2 &     &     &                             &     &     &                          &    &     &     &     &                            & 40                        & \cellcolor[HTML]{FFFFFF}20 & R1/4 \\ \hline
+R3 &     &     &                             &     &     & 150                      &    &     &     & 110 &                            &                           &                            & R5/3 \\ \hline
+R4 &     &     &                             &     & 130 &                          &    &     &     &     &                            & 60                        &                            & S3/2 \\ \hline
+R5 &     &     &                             &     &     &                          & 60 &     &     &     &                            &                           &                            & S1/2 \\ \hline
+R6 &     &     &                             &     &     &                          &    &     &     &     &                            &                           & 110                        & R3/4 \\ \hline
+R7 &     &     &                             &     &     &                          &    &     &     &     &                            & 20                        & \cellcolor[HTML]{C0C0C0}30 & R8/3 \\ \hline
+R8 &     &     & 60                          &     &     & \cellcolor[HTML]{FFFFFF} &    &     &     &     & \cellcolor[HTML]{C0C0C0}50 &                           &                            & S2/2 \\ \hline
+K  &     &     &                             &     &     & 40                       &    &     &     &     & 20                         &                           &                            & R7/4 \\ \hline
+\end{tabular}
+\end{table}
+
+/////////////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2                          & S3                          & R1  & R2                       & R3 & R4  & R5  & R6  & R7                         & R8                          & K                          &      \\ \hline
+S0 &     & $\infty$ & \cellcolor[HTML]{FFFFFF}$\infty$ & \cellcolor[HTML]{C0C0C0}$\infty$ &     &                          &    &     &     &     &                            &                             &                            & -/0  \\ \hline
+S1 &     &     &                             &                             &     &                          &    &     & 100 &     &                            &                             &                            & S0/1 \\ \hline
+S2 & inf &     &                             &                             &     &                          &    &     & 40  &     &                            & \cellcolor[HTML]{FFFFFF}    &                            & S0/1 \\ \hline
+S3 &     &     &                             &                             &     &                          &    & 140 &     &     &                            & \cellcolor[HTML]{C0C0C0}130 &                            & S0/1 \\ \hline
+R1 &     &     &                             &                             &     & 60                       &    &     &     &     & 30                         &                             &                            & R4/3 \\ \hline
+R2 &     &     &                             &                             &     &                          &    &     &     &     &                            & 40                          & \cellcolor[HTML]{FFFFFF}20 & R1/4 \\ \hline
+R3 &     &     &                             &                             &     & 150                      &    &     &     & 110 &                            &                             &                            & R5/3 \\ \hline
+R4 &     &     &                             &                             & 130 &                          &    &     &     &     &                            & 60                          &                            & S3/2 \\ \hline
+R5 &     &     &                             &                             &     &                          & 60 &     &     &     &                            &                             &                            & S1/2 \\ \hline
+R6 &     &     &                             &                             &     &                          &    &     &     &     &                            &                             & 110                        & R3/4 \\ \hline
+R7 &     &     &                             &                             &     &                          &    &     &     &     &                            & 20                          & \cellcolor[HTML]{C0C0C0}30 & R8/3 \\ \hline
+R8 &     &     & 60                          &                             &     & \cellcolor[HTML]{FFFFFF} &    &     &     &     & \cellcolor[HTML]{C0C0C0}50 &                             &                            & S3/2 \\ \hline
+K  &     &     &                             &                             &     & 40                       &    &     &     &     & 20                         &                             &                            & R7/4 \\ \hline
+\end{tabular}
+\end{table}
+
+/////////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2                          & S3                          & R1  & R2                       & R3 & R4  & R5  & R6  & R7                         & R8                          & K                          &      \\ \hline
+S0 &     & $\infty$ & \cellcolor[HTML]{FFFFFF}$\infty$ & \cellcolor[HTML]{C0C0C0}$\infty$ &     &                          &    &     &     &     &                            &                             &                            & -/0  \\ \hline
+S1 &     &     &                             &                             &     &                          &    &     & 100 &     &                            &                             &                            & S0/1 \\ \hline
+S2 & inf &     &                             &                             &     &                          &    &     & 40  &     &                            & \cellcolor[HTML]{FFFFFF}    &                            & S0/1 \\ \hline
+S3 & inf &     &                             &                             &     &                          &    & 140 &     &     &                            & \cellcolor[HTML]{C0C0C0}100 &                            & S0/1 \\ \hline
+R1 &     &     &                             &                             &     & 60                       &    &     &     &     & 30                         &                             &                            & R4/3 \\ \hline
+R2 &     &     &                             &                             &     &                          &    &     &     &     &                            & 40                          & \cellcolor[HTML]{FFFFFF}20 & R1/4 \\ \hline
+R3 &     &     &                             &                             &     & 150                      &    &     &     & 110 &                            &                             &                            & R5/3 \\ \hline
+R4 &     &     &                             &                             & 130 &                          &    &     &     &     &                            & 60                          &                            & S3/2 \\ \hline
+R5 &     &     &                             &                             &     &                          & 60 &     &     &     &                            &                             &                            & S1/2 \\ \hline
+R6 &     &     &                             &                             &     &                          &    &     &     &     &                            &                             & 110                        & R3/4 \\ \hline
+R7 &     &     &                             &                             &     &                          &    &     &     &     &                            & 50                          & \cellcolor[HTML]{C0C0C0}0  & R8/3 \\ \hline
+R8 &     &     & 60                          & 30                          &     & \cellcolor[HTML]{FFFFFF} &    &     &     &     & \cellcolor[HTML]{C0C0C0}20 &                             &                            & S3/2 \\ \hline
+K  &     &     &                             &                             &     & 40                       &    &     &     &     & 50                         &                             &                            & R7/4 \\ \hline
+\end{tabular}
+\end{table}
+
+//////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1                          & S2  & S3  & R1  & R2  & R3                         & R4  & R5                          & R6                          & R7 & R8  & K                           &      \\ \hline
+S0 &     & \cellcolor[HTML]{C0C0C0}$\infty$ & $\infty$ & $\infty$ &     &     &                            &     &                             &                             &    &     &                             & -/0  \\ \hline
+S1 &     &                             &     &     &     &     &                            &     & \cellcolor[HTML]{C0C0C0}100 &                             &    &     &                             & S0/1 \\ \hline
+S2 & inf &                             &     &     &     &     &                            &     & 40                          &                             &    &     &                             & S0/1 \\ \hline
+S3 & inf &                             &     &     &     &     &                            & 140 &                             &                             &    & 100 &                             & S0/1 \\ \hline
+R1 &     &                             &     &     &     & 60  &                            &     &                             &                             & 30 &     &                             & R4/3 \\ \hline
+R2 &     &                             &     &     &     &     &                            &     &                             &                             &    & 40  & 20                          & R1/4 \\ \hline
+R3 &     &                             &     &     &     & 150 &                            &     &                             & \cellcolor[HTML]{C0C0C0}110 &    &     &                             & R5/3 \\ \hline
+R4 &     &                             &     &     & 130 &     &                            &     &                             &                             &    & 60  &                             & S3/2 \\ \hline
+R5 &     &                             &     &     &     &     & \cellcolor[HTML]{C0C0C0}60 &     &                             &                             &    &     &                             & S1/2 \\ \hline
+R6 &     &                             &     &     &     &     &                            &     &                             &                             &    &     & \cellcolor[HTML]{C0C0C0}110 & R3/4 \\ \hline
+R7 &     &                             &     &     &     &     &                            &     &                             &                             &    & 50  &                             & R8/3 \\ \hline
+R8 &     &                             & 60  & 30  &     &     &                            &     &                             &                             & 20 &     &                             & S3/2 \\ \hline
+K  &     &                             &     &     &     & 40  &                            &     &                             &                             & 50 &     &                             & R6/5 \\ \hline
+\end{tabular}
+\end{table}
+
+//////////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1                          & S2  & S3  & R1  & R2  & R3                        & R4  & R5                         & R6                         & R7 & R8  & K                          &      \\ \hline
+S0 &     & \cellcolor[HTML]{C0C0C0}$\infty$ & $\infty$ & $\infty$ &     &     &                           &     &                            &                            &    &     &                            & -/0  \\ \hline
+S1 & inf &                             &     &     &     &     &                           &     & \cellcolor[HTML]{C0C0C0}40 &                            &    &     &                            & S0/1 \\ \hline
+S2 & inf &                             &     &     &     &     &                           &     & 40                         &                            &    &     &                            & S0/1 \\ \hline
+S3 & inf &                             &     &     &     &     &                           & 140 &                            &                            &    & 100 &                            & S0/1 \\ \hline
+R1 &     &                             &     &     &     & 60  &                           &     &                            &                            & 30 &     &                            & R4/3 \\ \hline
+R2 &     &                             &     &     &     &     &                           &     &                            &                            &    & 40  & 20                         & R1/4 \\ \hline
+R3 &     &                             &     &     &     & 150 &                           &     & 60                         & \cellcolor[HTML]{C0C0C0}50 &    &     &                            & R5/3 \\ \hline
+R4 &     &                             &     &     & 130 &     &                           &     &                            &                            &    & 60  &                            & S3/2 \\ \hline
+R5 &     & 60                          &     &     &     &     & \cellcolor[HTML]{C0C0C0}0 &     &                            &                            &    &     &                            & S1/2 \\ \hline
+R6 &     &                             &     &     &     &     & 60                        &     &                            &                            &    &     & \cellcolor[HTML]{C0C0C0}50 & R3/4 \\ \hline
+R7 &     &                             &     &     &     &     &                           &     &                            &                            &    & 50  &                            & R8/3 \\ \hline
+R8 &     &                             & 60  & 30  &     &     &                           &     &                            &                            & 20 &     &                            & S3/2 \\ \hline
+K  &     &                             &     &     &     & 40  &                           &     &                            & 60                         & 50 &     &                            & R6/5 \\ \hline
+\end{tabular}
+\end{table}
+
+/////////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2  & S3                          & R1                          & R2                         & R3 & R4                          & R5 & R6 & R7 & R8  & K                          &      \\ \hline
+S0 &     & $\infty$ & $\infty$ & \cellcolor[HTML]{C0C0C0}$\infty$ &                             &                            &    &                             &    &    &    &     &                            & -/0  \\ \hline
+S1 & inf &     &     &                             &                             &                            &    &                             & 40 &    &    &     &                            & S0/1 \\ \hline
+S2 & inf &     &     &                             &                             &                            &    &                             & 40 &    &    &     &                            & S0/1 \\ \hline
+S3 & inf &     &     &                             &                             &                            &    & \cellcolor[HTML]{C0C0C0}140 &    &    &    & 100 &                            & S0/1 \\ \hline
+R1 &     &     &     &                             &                             & \cellcolor[HTML]{C0C0C0}60 &    &                             &    &    & 30 &     &                            & R4/3 \\ \hline
+R2 &     &     &     &                             &                             &                            &    &                             &    &    &    & 40  & \cellcolor[HTML]{C0C0C0}20 & R1/4 \\ \hline
+R3 &     &     &     &                             &                             & 150                        &    &                             & 60 & 50 &    &     &                            &      \\ \hline
+R4 &     &     &     &                             & \cellcolor[HTML]{C0C0C0}130 &                            &    &                             &    &    &    & 60  &                            & S3/2 \\ \hline
+R5 &     & 60  &     &                             &                             &                            &    &                             &    &    &    &     &                            & S1/2 \\ \hline
+R6 &     &     &     &                             &                             &                            & 60 &                             &    &    &    &     & 50                         &      \\ \hline
+R7 &     &     &     &                             &                             &                            &    &                             &    &    &    & 50  &                            & R8/3 \\ \hline
+R8 &     &     & 60  & 30                          &                             &                            &    &                             &    &    & 20 &     &                            & S3/2 \\ \hline
+K  &     &     &     &                             &                             & 40                         &    &                             &    & 60 & 50 &     &                            & R2/5 \\ \hline
+\end{tabular}
+\end{table}
+
+/////////////////////////////////////////
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2  & S3                          & R1                          & R2                         & R3 & R4                          & R5 & R6 & R7 & R8  & K                         &      \\ \hline
+S0 &     & $\infty$ & $\infty$ & \cellcolor[HTML]{C0C0C0}$\infty$ &                             &                            &    &                             &    &    &    &     &                           & -/0  \\ \hline
+S1 & inf &     &     &                             &                             &                            &    &                             & 40 &    &    &     &                           & S0/1 \\ \hline
+S2 & inf &     &     &                             &                             &                            &    &                             & 40 &    &    &     &                           & S0/1 \\ \hline
+S3 & inf &     &     &                             &                             &                            &    & \cellcolor[HTML]{C0C0C0}120 &    &    &    & 100 &                           & S0/1 \\ \hline
+R1 &     &     &     &                             &                             & \cellcolor[HTML]{C0C0C0}40 &    & 20                          &    &    & 30 &     &                           & R4/3 \\ \hline
+R2 &     &     &     &                             & 20                          &                            &    &                             &    &    &    & 40  & \cellcolor[HTML]{C0C0C0}0 & R1/4 \\ \hline
+R3 &     &     &     &                             &                             & 150                        &    &                             & 60 & 50 &    &     &                           &      \\ \hline
+R4 &     &     &     & 20                          & \cellcolor[HTML]{C0C0C0}110 &                            &    &                             &    &    &    & 60  &                           & S3/2 \\ \hline
+R5 &     & 60  &     &                             &                             &                            &    &                             &    &    &    &     &                           & S1/2 \\ \hline
+R6 &     &     &     &                             &                             &                            & 60 &                             &    &    &    &     & 50                        &      \\ \hline
+R7 &     &     &     &                             &                             &                            &    &                             &    &    &    & 50  &                           & R8/3 \\ \hline
+R8 &     &     & 60  & 30                          &                             &                            &    &                             &    &    & 20 &     &                           & S3/2 \\ \hline
+K  &     &     &     &                             &                             & 60                         &    &                             &    & 60 & 50 &     &                           & R2/5 \\ \hline
+\end{tabular}
+\end{table}
+
+//////////////////////////////////////////////
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+   & S0  & S1  & S2  & S3  & R1  & R2  & R3 & R4  & R5 & R6 & R7 & R8  & K  &      \\ \hline
+S0 &     & $\infty$ & $\infty$ & $\infty$ &     &     &    &     &    &    &    &     &    & -/0  \\ \hline
+S1 & inf &     &     &     &     &     &    &     & 40 &    &    &     &    & S0/1 \\ \hline
+S2 & inf &     &     &     &     &     &    &     & 40 &    &    &     &    & S0/1 \\ \hline
+S3 & inf &     &     &     &     &     &    & 120 &    &    &    & 100 &    & S0/1 \\ \hline
+R1 &     &     &     &     &     & 40  &    & 20  &    &    & 30 &     &    & R4/3 \\ \hline
+R2 &     &     &     &     & 20  &     &    &     &    &    &    & 40  &    & R1/4 \\ \hline
+R3 &     &     &     &     &     & 150 &    &     & 60 & 50 &    &     &    &      \\ \hline
+R4 &     &     &     & 20  & 110 &     &    &     &    &    &    & 60  &    & S3/2 \\ \hline
+R5 &     & 60  &     &     &     &     &    &     &    &    &    &     &    & S1/2 \\ \hline
+R6 &     &     &     &     &     &     & 60 &     &    &    &    &     & 50 &      \\ \hline
+R7 &     &     &     &     &     &     &    &     &    &    &    & 50  &    & R8/3 \\ \hline
+R8 &     &     & 60  & 30  &     &     &    &     &    &    & 20 &     &    & S3/2 \\ \hline
+K  &     &     &     &     &     & 60  &    &     &    & 60 & 50 &     &    &      \\ \hline
+\end{tabular}
+\end{table}
