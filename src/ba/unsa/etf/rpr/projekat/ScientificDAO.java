@@ -11,7 +11,7 @@ public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
     private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId,
-                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId, updateUser, updatePerson;
+                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId, updateUser, updatePerson, addGrade;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -98,6 +98,7 @@ public class ScientificDAO {
             addAuthor = conn.prepareStatement("insert into author values (?,?)");
             addAuthorForScWork = conn.prepareStatement("insert into ScWorksAuthors values (?,?)");
             addScWork = conn.prepareStatement("insert into ScWorks values (?,?,?)");
+            addGrade = conn.prepareStatement("insert into Rating values (?,?,?)");
 
             updateUser = conn.prepareStatement("UPDATE Users set username=?, password=?, mail=? where id = ?");
             updatePerson = conn.prepareStatement("UPDATE Person set firstname=?, lastname=?, age=?, gender=? where id = ?");
@@ -311,6 +312,16 @@ public class ScientificDAO {
             updateUser.setString(3, user.getEmail());
             updateUser.setInt(4, user.getId());
             updateUser.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addGrade(ScientificWork paper, User user, int grade){
+        try {
+            addGrade.setInt(1, paper.getId());
+            addGrade.setInt(2, user.getId());
+            addGrade.setInt(3, grade);
+            addGrade.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

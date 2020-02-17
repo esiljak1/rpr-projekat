@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: ba.unsa.etf.rpr.projekat.Main
+Class-Path: C:\Users\Emin Šiljak\IdeaProjects\Projekat-bazaPodatakaZaNa
+ ucneRadove\src\ba\unsa\etf\rpr\projekat
+
