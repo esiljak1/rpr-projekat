@@ -64,4 +64,7 @@ public class ReadDocumentController {
             e.printStackTrace();
         }
     }
+    public Integer getGrade(){
+        return choiceGrade.getSelectionModel().getSelectedItem();
+    }
 }

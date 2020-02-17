@@ -11,7 +11,7 @@ public class ScientificDAO {
     private static ScientificDAO instance;
     private Connection conn;
     private PreparedStatement getUserFromUsernamePassword, addUser, getUserId, getUserFromUsername, addPerson, getAuthorFromNameUni, getAllAuthors, addAuthor, getPersonId,
-                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId, updateUser, updatePerson, addGrade;
+                                addAuthorForScWork, addScWork, getPaperId, getPaperFromName, getPaperFromAuthor, getPaperFromTags, getAuthorsFromPaperId, updateUser, updatePerson, addGrade, getGrade;
 
     private void regenerisiBazu(){
         Scanner ulaz = null;
@@ -92,6 +92,7 @@ public class ScientificDAO {
             getPaperFromName = conn.prepareStatement("select * from ScWorks sc where sc.name like ?");
             getPaperFromAuthor = conn.prepareStatement("select s.* from scworks s, ScWorksAuthors sa, Author a, Person p where s.id = sa.sc_id and a.id = sa.author_id and p.id = a.id and p.firstname || ' ' || p.lastname like ?");
             getAuthorsFromPaperId = conn.prepareStatement("select p.*, a.university from person p, author a, ScWorksAuthors sa where sa.sc_id=? and sa.author_id=a.id and a.id=p.id");
+            getGrade = conn.prepareStatement("select avg(grade) from Rating where paper_id=?");
 
             addUser = conn.prepareStatement("insert into users values (?,?,?,?,?)");
             addPerson = conn.prepareStatement("insert into person values (?,?,?,?,?)");
@@ -261,6 +262,7 @@ public class ScientificDAO {
                 ScientificWork temp = getPaperFromResultSet(rs);
                 List<Author> list = getAuthorsFromPaperId(rs.getInt(1));
                 temp.setAuthors(list);
+                temp.setRating(getGrade(temp));
                 ret.add(temp);
             }
         } catch (Exception e) {
@@ -277,6 +279,7 @@ public class ScientificDAO {
                 ScientificWork temp = getPaperFromResultSet(rs);
                 List<Author> list = getAuthorsFromPaperId(rs.getInt(1));
                 temp.setAuthors(list);
+                temp.setRating(getGrade(temp));
                 ret.add(temp);
             }
         } catch (Exception e) {
@@ -291,6 +294,7 @@ public class ScientificDAO {
             while(rs.next()){
                 ScientificWork temp = getPaperFromResultSet(rs);
                 List<Author> list = getAuthorsFromPaperId(rs.getInt(1));
+                temp.setRating(getGrade(temp));
                 temp.setAuthors(list);
                 ret.add(temp);
             }
@@ -325,5 +329,14 @@ public class ScientificDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public double getGrade(ScientificWork paper){
+        try {
+            getGrade.setInt(1, paper.getId());
+            ResultSet rs = getGrade.executeQuery();
+            return rs.getDouble(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }return 0;
     }
 }

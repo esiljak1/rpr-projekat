@@ -167,7 +167,7 @@ public class SWWMainController {
                 }
                 Stage stage = new Stage();
                 stage.setTitle("Search results");
-                stage.setScene(new Scene(root, 300, 300));
+                stage.setScene(new Scene(root, 600, 400));
                 stage.show();
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);

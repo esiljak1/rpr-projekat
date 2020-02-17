@@ -23,6 +23,7 @@ public class SearchPaperController {
     public TableColumn<ScientificWork, String> columnName;
     public TableColumn<ScientificWork, List<Author>> columnAuthors;
     public TableColumn<ScientificWork, String[]> columnTags;
+    public TableColumn<ScientificWork, Double> columnRating;
 
     public SearchPaperController(List<ScientificWork> list, User user) {
         this.user = user;
@@ -33,6 +34,7 @@ public class SearchPaperController {
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnAuthors.setCellValueFactory(new PropertyValueFactory<>("authors"));
         columnTags.setCellValueFactory(new PropertyValueFactory<>("tags"));
+        columnRating.setCellValueFactory(new PropertyValueFactory<>("rating"));
         tableScWorks.setItems(list);
 
         tableScWorks.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
@@ -50,6 +52,13 @@ public class SearchPaperController {
             stage.setTitle(newVal.getName());
             stage.setScene(new Scene(root, 400, 600));
             stage.show();
+            stage.setOnHiding(windowEvent -> {
+                if(ctrl.getGrade() != null){
+                    ScientificDAO.getInstance().addGrade(newVal, user, ctrl.getGrade());
+                    newVal.setRating(ScientificDAO.getInstance().getGrade(newVal));
+                    tableScWorks.refresh();
+                }
+            });
         });
     }
 }
