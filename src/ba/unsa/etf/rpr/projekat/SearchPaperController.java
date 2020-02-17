@@ -17,12 +17,15 @@ import java.util.ResourceBundle;
 
 public class SearchPaperController {
     private ObservableList<ScientificWork> list = FXCollections.observableArrayList();
+    private User user = null;
+
     public TableView<ScientificWork> tableScWorks;
     public TableColumn<ScientificWork, String> columnName;
     public TableColumn<ScientificWork, List<Author>> columnAuthors;
     public TableColumn<ScientificWork, String[]> columnTags;
 
-    public SearchPaperController(List<ScientificWork> list) {
+    public SearchPaperController(List<ScientificWork> list, User user) {
+        this.user = user;
         this.list.setAll(list);
     }
     @FXML
@@ -33,7 +36,7 @@ public class SearchPaperController {
         tableScWorks.setItems(list);
 
         tableScWorks.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            ReadDocumentController ctrl = new ReadDocumentController(newVal.getName());
+            ReadDocumentController ctrl = new ReadDocumentController(newVal.getName(), user);
             ResourceBundle bundle = ResourceBundle.getBundle("translation");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReadDocument.fxml"), bundle);
             loader.setController(ctrl);

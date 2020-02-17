@@ -155,7 +155,7 @@ public class SWWMainController {
                     list = instance.getWorksByTag(fldSearch.getText());
                     System.out.println("Pretraga po tagovima");
                 }
-                SearchPaperController ctrl = new SearchPaperController(list);
+                SearchPaperController ctrl = new SearchPaperController(list, currentUser);
                 ResourceBundle bundle = ResourceBundle.getBundle("translation");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SearchPaper.fxml"), bundle);
                 loader.setController(ctrl);
