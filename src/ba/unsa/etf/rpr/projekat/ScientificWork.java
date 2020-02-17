@@ -25,7 +25,7 @@ public class ScientificWork {
         this.rating = 0;
     }
 
-    public ScientificWork(List<Author> authors, String name, String[] tags) throws IllegalUserException {
+    public ScientificWork(List<Author> authors, String name, String[] tags){
         //test(authors);
         this.authors = authors;
         this.name = name;
@@ -45,7 +45,7 @@ public class ScientificWork {
         return authors;
     }
 
-    public void setAuthors(List<Author> authors) throws IllegalUserException {
+    public void setAuthors(List<Author> authors){
        // test(authors);
         this.authors = authors;
     }

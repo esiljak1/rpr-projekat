@@ -138,11 +138,7 @@ public class AddPaperController {
         }else{
             if(fileTxt != null && !fileTxt.getText().trim().isEmpty() && listAuthors.getItems().size() != 0 && tags != null){
                 String [] arr = tags.split(",");
-                try {
                     paper = new ScientificWork(authors, fileTxt.getText(), arr);
-                } catch (IllegalUserException e) {
-                    e.printStackTrace();
-                }
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Please fill in all of the fields including tags");

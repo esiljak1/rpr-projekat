@@ -8,9 +8,9 @@ public class User implements Person{
     private SimpleStringProperty firstname, lastname;
     private SimpleIntegerProperty age;
     private SimpleObjectProperty<Gender> gender;
-    private int id;
-    private SimpleStringProperty username, password, email;
-    private String image;
+    private int id = 0;
+    private SimpleStringProperty username = new SimpleStringProperty(), password = new SimpleStringProperty(), email = new SimpleStringProperty();
+    private String image = "";
 
     public User(String firstname, String lastname, int age, Gender gender) {
         this.firstname = new SimpleStringProperty(firstname);
@@ -150,5 +150,10 @@ public class User implements Person{
 
     public SimpleStringProperty emailProperty() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return firstname.get() + " " + lastname.get() + " (" + age.get() + ") " + username.get();
     }
 }
