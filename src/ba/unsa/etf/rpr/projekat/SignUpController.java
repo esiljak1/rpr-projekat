@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignUpController {
     public ImageView imgAvatar;
@@ -99,7 +100,13 @@ public class SignUpController {
             }
         });
         fldUsername.textProperty().addListener((obs, oldVal, newVal) -> {
-            if(!newVal.trim().isEmpty()){
+            AtomicBoolean uslov = new AtomicBoolean(true);
+            Thread thread = new Thread(() -> {
+                uslov.set(instance.existsUser(fldUsername.getText()));
+            });
+            thread.setPriority(1);
+            thread.start();
+            if(!newVal.trim().isEmpty() && !uslov.get()){
                 fldUsername.getStyleClass().removeAll("poljeNijeIspravno");
                 fldUsername.getStyleClass().add("poljeIspravno");
             }else{

@@ -45,7 +45,7 @@ public class ScientificWork {
         return authors;
     }
 
-    public void setAuthors(List<Author> authors){
+    public void setAuthors(List<Author> authors)    {
        // test(authors);
         this.authors = authors;
     }

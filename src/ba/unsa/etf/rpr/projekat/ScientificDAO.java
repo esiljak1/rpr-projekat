@@ -190,7 +190,7 @@ public class ScientificDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }return ret;
+            }return ret;
     }
     public int addAuthor(Author author){
         int id = 0;
