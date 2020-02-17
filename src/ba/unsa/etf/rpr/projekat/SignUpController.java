@@ -123,8 +123,14 @@ public class SignUpController {
                 int age = getAge(dateDOB.getValue());
                 User user = new User(0, fldFirstname.getText(), fldLastname.getText(), age, g, fldUsername.getText(), fldPassword.getText(), fldMail.getText(), imgAvatar.getImage().getUrl());
                 instance.addUser(user);
+                Node node = (Node) actionEvent.getSource();
+                Stage st = (Stage) node.getScene().getWindow();
+                st.close();
             }else{
-                System.out.println("NOT OK");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("All fields must be valid");
+                alert.show();
             }
         });
         cancelBtn.setOnAction(actionEvent -> {
