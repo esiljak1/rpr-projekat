@@ -15,6 +15,7 @@ public class Author implements Person {
         this.age = age;
         this.gender = gender;
         this.university = university;
+        this.id = 0;
     }
 
     public Author(int id, String firstname, String lastname, int age, Gender gender, String university) {
