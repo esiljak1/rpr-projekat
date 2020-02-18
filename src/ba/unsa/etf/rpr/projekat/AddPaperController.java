@@ -27,6 +27,7 @@ public class AddPaperController {
     public TextField fileTxt;
     public ListView<Author> listAuthors;
     public CheckBox checkAuthor;
+    public MenuItem itemClose, itemAbout, itemInstructions;
 
     private File selectedFile = null;
     private User user = null;
@@ -129,6 +130,13 @@ public class AddPaperController {
                 authors.removeIf(author1 -> author1.equals(author));
                 listAuthors.setItems(authors);
             }
+        });
+        itemClose.setOnAction(this::closeAction);
+        itemAbout.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ABOUT US");
+            alert.setHeaderText("NAME: Scientific Work Wiki\nVERSION: Alpha 1\nAUTHOR: github.com/esiljak1");
+            alert.show();
         });
     }
 

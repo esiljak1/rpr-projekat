@@ -231,6 +231,12 @@ public class SWWMainController {
                 e.printStackTrace();
             }
         });
+        itemAbout.setOnAction(actionEvent -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ABOUT US");
+            alert.setHeaderText("NAME: Scientific Work Wiki\nVERSION: Alpha 1\nAUTHOR: github.com/esiljak1");
+            alert.show();
+        });
     }
     public void closeAction(ActionEvent actionEvent){
         System.exit(0);
