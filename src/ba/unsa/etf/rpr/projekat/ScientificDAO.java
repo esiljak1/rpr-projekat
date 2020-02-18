@@ -35,13 +35,6 @@ public class ScientificDAO {
             e.printStackTrace();
         }
     }
-    private String getString (String[] arr){
-        String ret = "";
-        for(int i = 0; i < arr.length; i++){
-            ret += arr[i];
-            ret += ",";
-        }return ret;
-    }
     private ScientificWork getPaperFromResultSet(ResultSet rs) throws SQLException, IllegalUserException {
         return new ScientificWork(rs.getInt(1), null, rs.getString(2), (rs.getString(3).split(",")));
     }
@@ -226,7 +219,7 @@ public class ScientificDAO {
         try {
             addScWork.setInt(1, id);
             addScWork.setString(2, paper.getName());
-            addScWork.setString(3, getString(paper.getTags()));
+            addScWork.setString(3, paper.getTags());
             addScWork.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

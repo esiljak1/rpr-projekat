@@ -22,7 +22,7 @@ public class SearchPaperController {
     public TableView<ScientificWork> tableScWorks;
     public TableColumn<ScientificWork, String> columnName;
     public TableColumn<ScientificWork, List<Author>> columnAuthors;
-    public TableColumn<ScientificWork, String[]> columnTags;
+    public TableColumn<ScientificWork, String> columnTags;
     public TableColumn<ScientificWork, Double> columnRating;
 
     public SearchPaperController(List<ScientificWork> list, User user) {

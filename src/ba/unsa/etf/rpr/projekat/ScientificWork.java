@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.projekat;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ScientificWork {
@@ -58,8 +59,8 @@ public class ScientificWork {
         this.name = name;
     }
 
-    public String[] getTags() {
-        return tags;
+    public String getTags() {
+        return Arrays.toString(tags);
     }
 
     public void setTags(String[] tags) {
