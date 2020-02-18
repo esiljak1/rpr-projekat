@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Pattern;
 
 public class SignUpController {
     public ImageView imgAvatar;
@@ -42,6 +43,18 @@ public class SignUpController {
                 return age;
             }
         }return age + 1;
+    }
+    private boolean isValidMail(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
     public SignUpController(ScientificDAO instance) {
@@ -82,7 +95,7 @@ public class SignUpController {
         fldMail.textProperty().addListener((observableValue, oldVal, newVal) -> {
             //testiranje ispravnosti maila
             //sad cemo staviti da je svaki mail ispravan dok ne odradimo ovu funkcionalnost
-            if(!newVal.trim().isEmpty()) {
+            if(!newVal.trim().isEmpty() && isValidMail(newVal)) {
                 fldMail.getStyleClass().removeAll("poljeNijeIspravno");
                 fldMail.getStyleClass().add("poljeIspravno");
             }else{
@@ -104,8 +117,7 @@ public class SignUpController {
             Thread thread = new Thread(() -> {
                 uslov.set(instance.existsUser(fldUsername.getText()));
             });
-            thread.setPriority(1);
-            thread.start();
+            thread.run();
             if(!newVal.trim().isEmpty() && !uslov.get()){
                 fldUsername.getStyleClass().removeAll("poljeNijeIspravno");
                 fldUsername.getStyleClass().add("poljeIspravno");

@@ -31,8 +31,6 @@ public class LogScreenController {
     @FXML
     public void initialize(){
         instance = ScientificDAO.getInstance();
-        //instance.napuni();
-        //todo dodati funkcionalnost za ok ukoliko username i password nisu prazna polja, skoro pa gotovo!!
 
         imgLogo.setImage(new Image(new File("@/../Resources/images/logo.png").toURI().toString(), 300, 250, false, false));
         okBtn.setOnAction((actionEvent) -> {

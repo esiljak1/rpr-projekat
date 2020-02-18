@@ -144,7 +144,6 @@ public class SWWMainController {
         });
         searchBtn.setOnAction(actionEvent -> {
             if(fldSearch != null && !fldSearch.getText().trim().isEmpty()){
-                //todo add search in database by name author and tags
                 List<ScientificWork> list = new ArrayList<>();
                 if(choiceCategory.getSelectionModel().getSelectedItem().equals("Name")){
                     list = instance.getWorksByName(fldSearch.getText());
