@@ -237,6 +237,22 @@ public class SWWMainController {
             alert.setHeaderText("NAME: Scientific Work Wiki\nVERSION: Alpha 1\nAUTHOR: github.com/esiljak1");
             alert.show();
         });
+        itemInstructions.setOnAction(actionEvent -> {
+            InstructionsController ctrl = new InstructionsController();
+            ResourceBundle bundle = ResourceBundle.getBundle("translation");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Instructions.fxml"), bundle);
+            loader.setController(ctrl);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Instructions");
+            stage.setScene(new Scene(root, 300, 400));
+            stage.show();
+        });
     }
     public void closeAction(ActionEvent actionEvent){
         System.exit(0);
